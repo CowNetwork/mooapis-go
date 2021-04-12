@@ -18,12 +18,26 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type SessionServiceClient interface {
-	// Create creates a new session
-	Create(ctx context.Context, in *CreateSessionRequest, opts ...grpc.CallOption) (*CreateSessionResponse, error)
-	// Stop stops and removes a session
-	Stop(ctx context.Context, in *StopSessionRequest, opts ...grpc.CallOption) (*StopSessionResponse, error)
-	// Get retrieves information about a existing session
-	Get(ctx context.Context, in *GetSessionRequest, opts ...grpc.CallOption) (*GetSessionResponse, error)
+	// creates a new session
+	CreateSession(ctx context.Context, in *CreateSessionRequest, opts ...grpc.CallOption) (*CreateSessionResponse, error)
+	// stops and removes a session
+	StopSession(ctx context.Context, in *StopSessionRequest, opts ...grpc.CallOption) (*StopSessionResponse, error)
+	// retrieves information about a existing session
+	GetSession(ctx context.Context, in *GetSessionRequest, opts ...grpc.CallOption) (*GetSessionResponse, error)
+	// kicks the given player
+	KickPlayer(ctx context.Context, in *KickPlayerRequest, opts ...grpc.CallOption) (*KickPlayerResponse, error)
+	// bans the given player
+	BanPlayer(ctx context.Context, in *BanPlayerRequest, opts ...grpc.CallOption) (*BanPlayerResponse, error)
+	// retrieves all bans associated to a player
+	GetBans(ctx context.Context, in *GetBansRequest, opts ...grpc.CallOption) (*GetBansResponse, error)
+	// revoke a ban
+	RevokeBan(ctx context.Context, in *RevokeBanRequest, opts ...grpc.CallOption) (*RevokeBanResponse, error)
+	// enables or disabled maintenance mode
+	SetMaintenanceMode(ctx context.Context, in *SetMaintenanceModeRequest, opts ...grpc.CallOption) (*SetMaintenanceModeResponse, error)
+	// blacklists a player
+	BlacklistPlayer(ctx context.Context, in *BlacklistPlayerRequest, opts ...grpc.CallOption) (*BlacklistPlayerResponse, error)
+	// revokes the blacklist entry of a player
+	RevokeBlacklistPlayer(ctx context.Context, in *RevokeBlacklistPlayerRequest, opts ...grpc.CallOption) (*RevokeBlacklistPlayerResponse, error)
 }
 
 type sessionServiceClient struct {
@@ -34,27 +48,90 @@ func NewSessionServiceClient(cc grpc.ClientConnInterface) SessionServiceClient {
 	return &sessionServiceClient{cc}
 }
 
-func (c *sessionServiceClient) Create(ctx context.Context, in *CreateSessionRequest, opts ...grpc.CallOption) (*CreateSessionResponse, error) {
+func (c *sessionServiceClient) CreateSession(ctx context.Context, in *CreateSessionRequest, opts ...grpc.CallOption) (*CreateSessionResponse, error) {
 	out := new(CreateSessionResponse)
-	err := c.cc.Invoke(ctx, "/cow.session.v1.SessionService/Create", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/cow.session.v1.SessionService/CreateSession", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionServiceClient) Stop(ctx context.Context, in *StopSessionRequest, opts ...grpc.CallOption) (*StopSessionResponse, error) {
+func (c *sessionServiceClient) StopSession(ctx context.Context, in *StopSessionRequest, opts ...grpc.CallOption) (*StopSessionResponse, error) {
 	out := new(StopSessionResponse)
-	err := c.cc.Invoke(ctx, "/cow.session.v1.SessionService/Stop", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/cow.session.v1.SessionService/StopSession", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionServiceClient) Get(ctx context.Context, in *GetSessionRequest, opts ...grpc.CallOption) (*GetSessionResponse, error) {
+func (c *sessionServiceClient) GetSession(ctx context.Context, in *GetSessionRequest, opts ...grpc.CallOption) (*GetSessionResponse, error) {
 	out := new(GetSessionResponse)
-	err := c.cc.Invoke(ctx, "/cow.session.v1.SessionService/Get", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/cow.session.v1.SessionService/GetSession", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *sessionServiceClient) KickPlayer(ctx context.Context, in *KickPlayerRequest, opts ...grpc.CallOption) (*KickPlayerResponse, error) {
+	out := new(KickPlayerResponse)
+	err := c.cc.Invoke(ctx, "/cow.session.v1.SessionService/KickPlayer", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *sessionServiceClient) BanPlayer(ctx context.Context, in *BanPlayerRequest, opts ...grpc.CallOption) (*BanPlayerResponse, error) {
+	out := new(BanPlayerResponse)
+	err := c.cc.Invoke(ctx, "/cow.session.v1.SessionService/BanPlayer", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *sessionServiceClient) GetBans(ctx context.Context, in *GetBansRequest, opts ...grpc.CallOption) (*GetBansResponse, error) {
+	out := new(GetBansResponse)
+	err := c.cc.Invoke(ctx, "/cow.session.v1.SessionService/GetBans", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *sessionServiceClient) RevokeBan(ctx context.Context, in *RevokeBanRequest, opts ...grpc.CallOption) (*RevokeBanResponse, error) {
+	out := new(RevokeBanResponse)
+	err := c.cc.Invoke(ctx, "/cow.session.v1.SessionService/RevokeBan", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *sessionServiceClient) SetMaintenanceMode(ctx context.Context, in *SetMaintenanceModeRequest, opts ...grpc.CallOption) (*SetMaintenanceModeResponse, error) {
+	out := new(SetMaintenanceModeResponse)
+	err := c.cc.Invoke(ctx, "/cow.session.v1.SessionService/SetMaintenanceMode", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *sessionServiceClient) BlacklistPlayer(ctx context.Context, in *BlacklistPlayerRequest, opts ...grpc.CallOption) (*BlacklistPlayerResponse, error) {
+	out := new(BlacklistPlayerResponse)
+	err := c.cc.Invoke(ctx, "/cow.session.v1.SessionService/BlacklistPlayer", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *sessionServiceClient) RevokeBlacklistPlayer(ctx context.Context, in *RevokeBlacklistPlayerRequest, opts ...grpc.CallOption) (*RevokeBlacklistPlayerResponse, error) {
+	out := new(RevokeBlacklistPlayerResponse)
+	err := c.cc.Invoke(ctx, "/cow.session.v1.SessionService/RevokeBlacklistPlayer", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -65,26 +142,61 @@ func (c *sessionServiceClient) Get(ctx context.Context, in *GetSessionRequest, o
 // All implementations should embed UnimplementedSessionServiceServer
 // for forward compatibility
 type SessionServiceServer interface {
-	// Create creates a new session
-	Create(context.Context, *CreateSessionRequest) (*CreateSessionResponse, error)
-	// Stop stops and removes a session
-	Stop(context.Context, *StopSessionRequest) (*StopSessionResponse, error)
-	// Get retrieves information about a existing session
-	Get(context.Context, *GetSessionRequest) (*GetSessionResponse, error)
+	// creates a new session
+	CreateSession(context.Context, *CreateSessionRequest) (*CreateSessionResponse, error)
+	// stops and removes a session
+	StopSession(context.Context, *StopSessionRequest) (*StopSessionResponse, error)
+	// retrieves information about a existing session
+	GetSession(context.Context, *GetSessionRequest) (*GetSessionResponse, error)
+	// kicks the given player
+	KickPlayer(context.Context, *KickPlayerRequest) (*KickPlayerResponse, error)
+	// bans the given player
+	BanPlayer(context.Context, *BanPlayerRequest) (*BanPlayerResponse, error)
+	// retrieves all bans associated to a player
+	GetBans(context.Context, *GetBansRequest) (*GetBansResponse, error)
+	// revoke a ban
+	RevokeBan(context.Context, *RevokeBanRequest) (*RevokeBanResponse, error)
+	// enables or disabled maintenance mode
+	SetMaintenanceMode(context.Context, *SetMaintenanceModeRequest) (*SetMaintenanceModeResponse, error)
+	// blacklists a player
+	BlacklistPlayer(context.Context, *BlacklistPlayerRequest) (*BlacklistPlayerResponse, error)
+	// revokes the blacklist entry of a player
+	RevokeBlacklistPlayer(context.Context, *RevokeBlacklistPlayerRequest) (*RevokeBlacklistPlayerResponse, error)
 }
 
 // UnimplementedSessionServiceServer should be embedded to have forward compatible implementations.
 type UnimplementedSessionServiceServer struct {
 }
 
-func (UnimplementedSessionServiceServer) Create(context.Context, *CreateSessionRequest) (*CreateSessionResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Create not implemented")
+func (UnimplementedSessionServiceServer) CreateSession(context.Context, *CreateSessionRequest) (*CreateSessionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateSession not implemented")
 }
-func (UnimplementedSessionServiceServer) Stop(context.Context, *StopSessionRequest) (*StopSessionResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Stop not implemented")
+func (UnimplementedSessionServiceServer) StopSession(context.Context, *StopSessionRequest) (*StopSessionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StopSession not implemented")
 }
-func (UnimplementedSessionServiceServer) Get(context.Context, *GetSessionRequest) (*GetSessionResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Get not implemented")
+func (UnimplementedSessionServiceServer) GetSession(context.Context, *GetSessionRequest) (*GetSessionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetSession not implemented")
+}
+func (UnimplementedSessionServiceServer) KickPlayer(context.Context, *KickPlayerRequest) (*KickPlayerResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method KickPlayer not implemented")
+}
+func (UnimplementedSessionServiceServer) BanPlayer(context.Context, *BanPlayerRequest) (*BanPlayerResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BanPlayer not implemented")
+}
+func (UnimplementedSessionServiceServer) GetBans(context.Context, *GetBansRequest) (*GetBansResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetBans not implemented")
+}
+func (UnimplementedSessionServiceServer) RevokeBan(context.Context, *RevokeBanRequest) (*RevokeBanResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RevokeBan not implemented")
+}
+func (UnimplementedSessionServiceServer) SetMaintenanceMode(context.Context, *SetMaintenanceModeRequest) (*SetMaintenanceModeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetMaintenanceMode not implemented")
+}
+func (UnimplementedSessionServiceServer) BlacklistPlayer(context.Context, *BlacklistPlayerRequest) (*BlacklistPlayerResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BlacklistPlayer not implemented")
+}
+func (UnimplementedSessionServiceServer) RevokeBlacklistPlayer(context.Context, *RevokeBlacklistPlayerRequest) (*RevokeBlacklistPlayerResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RevokeBlacklistPlayer not implemented")
 }
 
 // UnsafeSessionServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -98,56 +210,182 @@ func RegisterSessionServiceServer(s grpc.ServiceRegistrar, srv SessionServiceSer
 	s.RegisterService(&SessionService_ServiceDesc, srv)
 }
 
-func _SessionService_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _SessionService_CreateSession_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateSessionRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionServiceServer).Create(ctx, in)
+		return srv.(SessionServiceServer).CreateSession(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/cow.session.v1.SessionService/Create",
+		FullMethod: "/cow.session.v1.SessionService/CreateSession",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionServiceServer).Create(ctx, req.(*CreateSessionRequest))
+		return srv.(SessionServiceServer).CreateSession(ctx, req.(*CreateSessionRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionService_Stop_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _SessionService_StopSession_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(StopSessionRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionServiceServer).Stop(ctx, in)
+		return srv.(SessionServiceServer).StopSession(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/cow.session.v1.SessionService/Stop",
+		FullMethod: "/cow.session.v1.SessionService/StopSession",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionServiceServer).Stop(ctx, req.(*StopSessionRequest))
+		return srv.(SessionServiceServer).StopSession(ctx, req.(*StopSessionRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionService_Get_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _SessionService_GetSession_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetSessionRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionServiceServer).Get(ctx, in)
+		return srv.(SessionServiceServer).GetSession(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/cow.session.v1.SessionService/Get",
+		FullMethod: "/cow.session.v1.SessionService/GetSession",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionServiceServer).Get(ctx, req.(*GetSessionRequest))
+		return srv.(SessionServiceServer).GetSession(ctx, req.(*GetSessionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SessionService_KickPlayer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(KickPlayerRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SessionServiceServer).KickPlayer(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cow.session.v1.SessionService/KickPlayer",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SessionServiceServer).KickPlayer(ctx, req.(*KickPlayerRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SessionService_BanPlayer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(BanPlayerRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SessionServiceServer).BanPlayer(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cow.session.v1.SessionService/BanPlayer",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SessionServiceServer).BanPlayer(ctx, req.(*BanPlayerRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SessionService_GetBans_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetBansRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SessionServiceServer).GetBans(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cow.session.v1.SessionService/GetBans",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SessionServiceServer).GetBans(ctx, req.(*GetBansRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SessionService_RevokeBan_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RevokeBanRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SessionServiceServer).RevokeBan(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cow.session.v1.SessionService/RevokeBan",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SessionServiceServer).RevokeBan(ctx, req.(*RevokeBanRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SessionService_SetMaintenanceMode_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetMaintenanceModeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SessionServiceServer).SetMaintenanceMode(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cow.session.v1.SessionService/SetMaintenanceMode",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SessionServiceServer).SetMaintenanceMode(ctx, req.(*SetMaintenanceModeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SessionService_BlacklistPlayer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(BlacklistPlayerRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SessionServiceServer).BlacklistPlayer(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cow.session.v1.SessionService/BlacklistPlayer",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SessionServiceServer).BlacklistPlayer(ctx, req.(*BlacklistPlayerRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SessionService_RevokeBlacklistPlayer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RevokeBlacklistPlayerRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SessionServiceServer).RevokeBlacklistPlayer(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cow.session.v1.SessionService/RevokeBlacklistPlayer",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SessionServiceServer).RevokeBlacklistPlayer(ctx, req.(*RevokeBlacklistPlayerRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -160,16 +398,44 @@ var SessionService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*SessionServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "Create",
-			Handler:    _SessionService_Create_Handler,
+			MethodName: "CreateSession",
+			Handler:    _SessionService_CreateSession_Handler,
 		},
 		{
-			MethodName: "Stop",
-			Handler:    _SessionService_Stop_Handler,
+			MethodName: "StopSession",
+			Handler:    _SessionService_StopSession_Handler,
 		},
 		{
-			MethodName: "Get",
-			Handler:    _SessionService_Get_Handler,
+			MethodName: "GetSession",
+			Handler:    _SessionService_GetSession_Handler,
+		},
+		{
+			MethodName: "KickPlayer",
+			Handler:    _SessionService_KickPlayer_Handler,
+		},
+		{
+			MethodName: "BanPlayer",
+			Handler:    _SessionService_BanPlayer_Handler,
+		},
+		{
+			MethodName: "GetBans",
+			Handler:    _SessionService_GetBans_Handler,
+		},
+		{
+			MethodName: "RevokeBan",
+			Handler:    _SessionService_RevokeBan_Handler,
+		},
+		{
+			MethodName: "SetMaintenanceMode",
+			Handler:    _SessionService_SetMaintenanceMode_Handler,
+		},
+		{
+			MethodName: "BlacklistPlayer",
+			Handler:    _SessionService_BlacklistPlayer_Handler,
+		},
+		{
+			MethodName: "RevokeBlacklistPlayer",
+			Handler:    _SessionService_RevokeBlacklistPlayer_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
