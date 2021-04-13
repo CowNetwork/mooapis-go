@@ -20,14 +20,20 @@ const _ = grpc.SupportPackageIsVersion7
 type UserServiceClient interface {
 	// Returns the player or creates/updates it.
 	GetPlayer(ctx context.Context, in *GetPlayerRequest, opts ...grpc.CallOption) (*GetPlayerResponse, error)
+	// Returns the player or creates/updates it.
+	GetPlayerById(ctx context.Context, in *GetPlayerByIdRequest, opts ...grpc.CallOption) (*GetPlayerByIdResponse, error)
 	// Returns the players or creates/updates them.
 	GetPlayers(ctx context.Context, in *GetPlayersRequest, opts ...grpc.CallOption) (*GetPlayersResponse, error)
-	// Returns the user this player is assigned to.
-	GetPlayerUser(ctx context.Context, in *GetPlayerUserRequest, opts ...grpc.CallOption) (*GetPlayerUserResponse, error)
+	// Returns the players or creates/updates them.
+	GetPlayersById(ctx context.Context, in *GetPlayersByIdRequest, opts ...grpc.CallOption) (*GetPlayersByIdResponse, error)
 	// Returns the user by id.
 	GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error)
 	// Returns the players assigned to this user.
 	GetUserPlayers(ctx context.Context, in *GetUserPlayersRequest, opts ...grpc.CallOption) (*GetUserPlayersResponse, error)
+	// Updates the metadata and returns the player.
+	UpdatePlayerMetadata(ctx context.Context, in *UpdatePlayerMetadataRequest, opts ...grpc.CallOption) (*UpdatePlayerMetadataResponse, error)
+	// Updates the metadata and returns the user.
+	UpdateUserMetadata(ctx context.Context, in *UpdateUserMetadataRequest, opts ...grpc.CallOption) (*UpdateUserMetadataResponse, error)
 }
 
 type userServiceClient struct {
@@ -47,6 +53,15 @@ func (c *userServiceClient) GetPlayer(ctx context.Context, in *GetPlayerRequest,
 	return out, nil
 }
 
+func (c *userServiceClient) GetPlayerById(ctx context.Context, in *GetPlayerByIdRequest, opts ...grpc.CallOption) (*GetPlayerByIdResponse, error) {
+	out := new(GetPlayerByIdResponse)
+	err := c.cc.Invoke(ctx, "/cow.user.v1.UserService/GetPlayerById", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *userServiceClient) GetPlayers(ctx context.Context, in *GetPlayersRequest, opts ...grpc.CallOption) (*GetPlayersResponse, error) {
 	out := new(GetPlayersResponse)
 	err := c.cc.Invoke(ctx, "/cow.user.v1.UserService/GetPlayers", in, out, opts...)
@@ -56,9 +71,9 @@ func (c *userServiceClient) GetPlayers(ctx context.Context, in *GetPlayersReques
 	return out, nil
 }
 
-func (c *userServiceClient) GetPlayerUser(ctx context.Context, in *GetPlayerUserRequest, opts ...grpc.CallOption) (*GetPlayerUserResponse, error) {
-	out := new(GetPlayerUserResponse)
-	err := c.cc.Invoke(ctx, "/cow.user.v1.UserService/GetPlayerUser", in, out, opts...)
+func (c *userServiceClient) GetPlayersById(ctx context.Context, in *GetPlayersByIdRequest, opts ...grpc.CallOption) (*GetPlayersByIdResponse, error) {
+	out := new(GetPlayersByIdResponse)
+	err := c.cc.Invoke(ctx, "/cow.user.v1.UserService/GetPlayersById", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -83,20 +98,44 @@ func (c *userServiceClient) GetUserPlayers(ctx context.Context, in *GetUserPlaye
 	return out, nil
 }
 
+func (c *userServiceClient) UpdatePlayerMetadata(ctx context.Context, in *UpdatePlayerMetadataRequest, opts ...grpc.CallOption) (*UpdatePlayerMetadataResponse, error) {
+	out := new(UpdatePlayerMetadataResponse)
+	err := c.cc.Invoke(ctx, "/cow.user.v1.UserService/UpdatePlayerMetadata", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) UpdateUserMetadata(ctx context.Context, in *UpdateUserMetadataRequest, opts ...grpc.CallOption) (*UpdateUserMetadataResponse, error) {
+	out := new(UpdateUserMetadataResponse)
+	err := c.cc.Invoke(ctx, "/cow.user.v1.UserService/UpdateUserMetadata", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UserServiceServer is the server API for UserService service.
 // All implementations should embed UnimplementedUserServiceServer
 // for forward compatibility
 type UserServiceServer interface {
 	// Returns the player or creates/updates it.
 	GetPlayer(context.Context, *GetPlayerRequest) (*GetPlayerResponse, error)
+	// Returns the player or creates/updates it.
+	GetPlayerById(context.Context, *GetPlayerByIdRequest) (*GetPlayerByIdResponse, error)
 	// Returns the players or creates/updates them.
 	GetPlayers(context.Context, *GetPlayersRequest) (*GetPlayersResponse, error)
-	// Returns the user this player is assigned to.
-	GetPlayerUser(context.Context, *GetPlayerUserRequest) (*GetPlayerUserResponse, error)
+	// Returns the players or creates/updates them.
+	GetPlayersById(context.Context, *GetPlayersByIdRequest) (*GetPlayersByIdResponse, error)
 	// Returns the user by id.
 	GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error)
 	// Returns the players assigned to this user.
 	GetUserPlayers(context.Context, *GetUserPlayersRequest) (*GetUserPlayersResponse, error)
+	// Updates the metadata and returns the player.
+	UpdatePlayerMetadata(context.Context, *UpdatePlayerMetadataRequest) (*UpdatePlayerMetadataResponse, error)
+	// Updates the metadata and returns the user.
+	UpdateUserMetadata(context.Context, *UpdateUserMetadataRequest) (*UpdateUserMetadataResponse, error)
 }
 
 // UnimplementedUserServiceServer should be embedded to have forward compatible implementations.
@@ -106,17 +145,26 @@ type UnimplementedUserServiceServer struct {
 func (UnimplementedUserServiceServer) GetPlayer(context.Context, *GetPlayerRequest) (*GetPlayerResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPlayer not implemented")
 }
+func (UnimplementedUserServiceServer) GetPlayerById(context.Context, *GetPlayerByIdRequest) (*GetPlayerByIdResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPlayerById not implemented")
+}
 func (UnimplementedUserServiceServer) GetPlayers(context.Context, *GetPlayersRequest) (*GetPlayersResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPlayers not implemented")
 }
-func (UnimplementedUserServiceServer) GetPlayerUser(context.Context, *GetPlayerUserRequest) (*GetPlayerUserResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetPlayerUser not implemented")
+func (UnimplementedUserServiceServer) GetPlayersById(context.Context, *GetPlayersByIdRequest) (*GetPlayersByIdResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPlayersById not implemented")
 }
 func (UnimplementedUserServiceServer) GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUser not implemented")
 }
 func (UnimplementedUserServiceServer) GetUserPlayers(context.Context, *GetUserPlayersRequest) (*GetUserPlayersResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUserPlayers not implemented")
+}
+func (UnimplementedUserServiceServer) UpdatePlayerMetadata(context.Context, *UpdatePlayerMetadataRequest) (*UpdatePlayerMetadataResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdatePlayerMetadata not implemented")
+}
+func (UnimplementedUserServiceServer) UpdateUserMetadata(context.Context, *UpdateUserMetadataRequest) (*UpdateUserMetadataResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateUserMetadata not implemented")
 }
 
 // UnsafeUserServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -148,6 +196,24 @@ func _UserService_GetPlayer_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UserService_GetPlayerById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetPlayerByIdRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).GetPlayerById(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cow.user.v1.UserService/GetPlayerById",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).GetPlayerById(ctx, req.(*GetPlayerByIdRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _UserService_GetPlayers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetPlayersRequest)
 	if err := dec(in); err != nil {
@@ -166,20 +232,20 @@ func _UserService_GetPlayers_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
-func _UserService_GetPlayerUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetPlayerUserRequest)
+func _UserService_GetPlayersById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetPlayersByIdRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServiceServer).GetPlayerUser(ctx, in)
+		return srv.(UserServiceServer).GetPlayersById(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/cow.user.v1.UserService/GetPlayerUser",
+		FullMethod: "/cow.user.v1.UserService/GetPlayersById",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).GetPlayerUser(ctx, req.(*GetPlayerUserRequest))
+		return srv.(UserServiceServer).GetPlayersById(ctx, req.(*GetPlayersByIdRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -220,6 +286,42 @@ func _UserService_GetUserPlayers_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UserService_UpdatePlayerMetadata_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdatePlayerMetadataRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).UpdatePlayerMetadata(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cow.user.v1.UserService/UpdatePlayerMetadata",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).UpdatePlayerMetadata(ctx, req.(*UpdatePlayerMetadataRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_UpdateUserMetadata_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateUserMetadataRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).UpdateUserMetadata(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cow.user.v1.UserService/UpdateUserMetadata",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).UpdateUserMetadata(ctx, req.(*UpdateUserMetadataRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UserService_ServiceDesc is the grpc.ServiceDesc for UserService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -232,12 +334,16 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _UserService_GetPlayer_Handler,
 		},
 		{
+			MethodName: "GetPlayerById",
+			Handler:    _UserService_GetPlayerById_Handler,
+		},
+		{
 			MethodName: "GetPlayers",
 			Handler:    _UserService_GetPlayers_Handler,
 		},
 		{
-			MethodName: "GetPlayerUser",
-			Handler:    _UserService_GetPlayerUser_Handler,
+			MethodName: "GetPlayersById",
+			Handler:    _UserService_GetPlayersById_Handler,
 		},
 		{
 			MethodName: "GetUser",
@@ -246,6 +352,14 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetUserPlayers",
 			Handler:    _UserService_GetUserPlayers_Handler,
+		},
+		{
+			MethodName: "UpdatePlayerMetadata",
+			Handler:    _UserService_UpdatePlayerMetadata_Handler,
+		},
+		{
+			MethodName: "UpdateUserMetadata",
+			Handler:    _UserService_UpdateUserMetadata_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
