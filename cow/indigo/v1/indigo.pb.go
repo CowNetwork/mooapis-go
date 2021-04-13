@@ -20,6 +20,91 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type ListRolesRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *ListRolesRequest) Reset() {
+	*x = ListRolesRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[0]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ListRolesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListRolesRequest) ProtoMessage() {}
+
+func (x *ListRolesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[0]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListRolesRequest.ProtoReflect.Descriptor instead.
+func (*ListRolesRequest) Descriptor() ([]byte, []int) {
+	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{0}
+}
+
+type ListRolesResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Roles []*Role `protobuf:"bytes,1,rep,name=roles,proto3" json:"roles,omitempty"`
+}
+
+func (x *ListRolesResponse) Reset() {
+	*x = ListRolesResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ListRolesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListRolesResponse) ProtoMessage() {}
+
+func (x *ListRolesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListRolesResponse.ProtoReflect.Descriptor instead.
+func (*ListRolesResponse) Descriptor() ([]byte, []int) {
+	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *ListRolesResponse) GetRoles() []*Role {
+	if x != nil {
+		return x.Roles
+	}
+	return nil
+}
+
 type GetRoleRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -31,7 +116,7 @@ type GetRoleRequest struct {
 func (x *GetRoleRequest) Reset() {
 	*x = GetRoleRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[0]
+		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -44,7 +129,7 @@ func (x *GetRoleRequest) String() string {
 func (*GetRoleRequest) ProtoMessage() {}
 
 func (x *GetRoleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[0]
+	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -57,7 +142,7 @@ func (x *GetRoleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetRoleRequest.ProtoReflect.Descriptor instead.
 func (*GetRoleRequest) Descriptor() ([]byte, []int) {
-	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{0}
+	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *GetRoleRequest) GetRoleId() string {
@@ -78,7 +163,7 @@ type GetRoleResponse struct {
 func (x *GetRoleResponse) Reset() {
 	*x = GetRoleResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[1]
+		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -91,7 +176,7 @@ func (x *GetRoleResponse) String() string {
 func (*GetRoleResponse) ProtoMessage() {}
 
 func (x *GetRoleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[1]
+	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -104,7 +189,7 @@ func (x *GetRoleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetRoleResponse.ProtoReflect.Descriptor instead.
 func (*GetRoleResponse) Descriptor() ([]byte, []int) {
-	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{1}
+	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *GetRoleResponse) GetRole() *Role {
@@ -125,7 +210,7 @@ type InsertRoleRequest struct {
 func (x *InsertRoleRequest) Reset() {
 	*x = InsertRoleRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[2]
+		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -138,7 +223,7 @@ func (x *InsertRoleRequest) String() string {
 func (*InsertRoleRequest) ProtoMessage() {}
 
 func (x *InsertRoleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[2]
+	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -151,7 +236,7 @@ func (x *InsertRoleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use InsertRoleRequest.ProtoReflect.Descriptor instead.
 func (*InsertRoleRequest) Descriptor() ([]byte, []int) {
-	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{2}
+	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *InsertRoleRequest) GetRole() *Role {
@@ -166,13 +251,13 @@ type InsertRoleResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Successful bool `protobuf:"varint,1,opt,name=successful,proto3" json:"successful,omitempty"`
+	InsertedRole *Role `protobuf:"bytes,1,opt,name=inserted_role,json=insertedRole,proto3" json:"inserted_role,omitempty"`
 }
 
 func (x *InsertRoleResponse) Reset() {
 	*x = InsertRoleResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[3]
+		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -185,7 +270,7 @@ func (x *InsertRoleResponse) String() string {
 func (*InsertRoleResponse) ProtoMessage() {}
 
 func (x *InsertRoleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[3]
+	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -198,14 +283,201 @@ func (x *InsertRoleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use InsertRoleResponse.ProtoReflect.Descriptor instead.
 func (*InsertRoleResponse) Descriptor() ([]byte, []int) {
-	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{3}
+	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *InsertRoleResponse) GetSuccessful() bool {
+func (x *InsertRoleResponse) GetInsertedRole() *Role {
 	if x != nil {
-		return x.Successful
+		return x.InsertedRole
 	}
-	return false
+	return nil
+}
+
+type UpdateRoleRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	RoleId   string `protobuf:"bytes,1,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`
+	RoleData *Role  `protobuf:"bytes,2,opt,name=role_data,json=roleData,proto3" json:"role_data,omitempty"`
+}
+
+func (x *UpdateRoleRequest) Reset() {
+	*x = UpdateRoleRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[6]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *UpdateRoleRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateRoleRequest) ProtoMessage() {}
+
+func (x *UpdateRoleRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[6]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateRoleRequest.ProtoReflect.Descriptor instead.
+func (*UpdateRoleRequest) Descriptor() ([]byte, []int) {
+	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *UpdateRoleRequest) GetRoleId() string {
+	if x != nil {
+		return x.RoleId
+	}
+	return ""
+}
+
+func (x *UpdateRoleRequest) GetRoleData() *Role {
+	if x != nil {
+		return x.RoleData
+	}
+	return nil
+}
+
+type UpdateRoleResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	UpdatedRole *Role `protobuf:"bytes,1,opt,name=updated_role,json=updatedRole,proto3" json:"updated_role,omitempty"`
+}
+
+func (x *UpdateRoleResponse) Reset() {
+	*x = UpdateRoleResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *UpdateRoleResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateRoleResponse) ProtoMessage() {}
+
+func (x *UpdateRoleResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateRoleResponse.ProtoReflect.Descriptor instead.
+func (*UpdateRoleResponse) Descriptor() ([]byte, []int) {
+	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *UpdateRoleResponse) GetUpdatedRole() *Role {
+	if x != nil {
+		return x.UpdatedRole
+	}
+	return nil
+}
+
+type DeleteRoleRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	RoleId string `protobuf:"bytes,1,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`
+}
+
+func (x *DeleteRoleRequest) Reset() {
+	*x = DeleteRoleRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[8]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *DeleteRoleRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteRoleRequest) ProtoMessage() {}
+
+func (x *DeleteRoleRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[8]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteRoleRequest.ProtoReflect.Descriptor instead.
+func (*DeleteRoleRequest) Descriptor() ([]byte, []int) {
+	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *DeleteRoleRequest) GetRoleId() string {
+	if x != nil {
+		return x.RoleId
+	}
+	return ""
+}
+
+type DeleteRoleResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *DeleteRoleResponse) Reset() {
+	*x = DeleteRoleResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[9]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *DeleteRoleResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteRoleResponse) ProtoMessage() {}
+
+func (x *DeleteRoleResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[9]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteRoleResponse.ProtoReflect.Descriptor instead.
+func (*DeleteRoleResponse) Descriptor() ([]byte, []int) {
+	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{9}
 }
 
 type AddRolePermissionRequest struct {
@@ -220,7 +492,7 @@ type AddRolePermissionRequest struct {
 func (x *AddRolePermissionRequest) Reset() {
 	*x = AddRolePermissionRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[4]
+		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[10]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -233,7 +505,7 @@ func (x *AddRolePermissionRequest) String() string {
 func (*AddRolePermissionRequest) ProtoMessage() {}
 
 func (x *AddRolePermissionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[4]
+	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[10]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -246,7 +518,7 @@ func (x *AddRolePermissionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddRolePermissionRequest.ProtoReflect.Descriptor instead.
 func (*AddRolePermissionRequest) Descriptor() ([]byte, []int) {
-	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{4}
+	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *AddRolePermissionRequest) GetRoleId() string {
@@ -274,7 +546,7 @@ type AddRolePermissionResponse struct {
 func (x *AddRolePermissionResponse) Reset() {
 	*x = AddRolePermissionResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[5]
+		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -287,7 +559,7 @@ func (x *AddRolePermissionResponse) String() string {
 func (*AddRolePermissionResponse) ProtoMessage() {}
 
 func (x *AddRolePermissionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[5]
+	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -300,7 +572,7 @@ func (x *AddRolePermissionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddRolePermissionResponse.ProtoReflect.Descriptor instead.
 func (*AddRolePermissionResponse) Descriptor() ([]byte, []int) {
-	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{5}
+	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *AddRolePermissionResponse) GetAddedPermissions() []string {
@@ -322,7 +594,7 @@ type RemoveRolePermissionRequest struct {
 func (x *RemoveRolePermissionRequest) Reset() {
 	*x = RemoveRolePermissionRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[6]
+		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[12]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -335,7 +607,7 @@ func (x *RemoveRolePermissionRequest) String() string {
 func (*RemoveRolePermissionRequest) ProtoMessage() {}
 
 func (x *RemoveRolePermissionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[6]
+	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[12]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -348,7 +620,7 @@ func (x *RemoveRolePermissionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveRolePermissionRequest.ProtoReflect.Descriptor instead.
 func (*RemoveRolePermissionRequest) Descriptor() ([]byte, []int) {
-	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{6}
+	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *RemoveRolePermissionRequest) GetRoleId() string {
@@ -376,7 +648,7 @@ type RemoveRolePermissionResponse struct {
 func (x *RemoveRolePermissionResponse) Reset() {
 	*x = RemoveRolePermissionResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[7]
+		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[13]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -389,7 +661,7 @@ func (x *RemoveRolePermissionResponse) String() string {
 func (*RemoveRolePermissionResponse) ProtoMessage() {}
 
 func (x *RemoveRolePermissionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[7]
+	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[13]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -402,7 +674,7 @@ func (x *RemoveRolePermissionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveRolePermissionResponse.ProtoReflect.Descriptor instead.
 func (*RemoveRolePermissionResponse) Descriptor() ([]byte, []int) {
-	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{7}
+	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *RemoveRolePermissionResponse) GetRemovedPermissions() []string {
@@ -423,7 +695,7 @@ type GetUserRolesRequest struct {
 func (x *GetUserRolesRequest) Reset() {
 	*x = GetUserRolesRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[8]
+		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[14]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -436,7 +708,7 @@ func (x *GetUserRolesRequest) String() string {
 func (*GetUserRolesRequest) ProtoMessage() {}
 
 func (x *GetUserRolesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[8]
+	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[14]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -449,7 +721,7 @@ func (x *GetUserRolesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserRolesRequest.ProtoReflect.Descriptor instead.
 func (*GetUserRolesRequest) Descriptor() ([]byte, []int) {
-	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{8}
+	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *GetUserRolesRequest) GetUserAccountId() string {
@@ -470,7 +742,7 @@ type GetUserRolesResponse struct {
 func (x *GetUserRolesResponse) Reset() {
 	*x = GetUserRolesResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[9]
+		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[15]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -483,7 +755,7 @@ func (x *GetUserRolesResponse) String() string {
 func (*GetUserRolesResponse) ProtoMessage() {}
 
 func (x *GetUserRolesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[9]
+	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[15]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -496,7 +768,7 @@ func (x *GetUserRolesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserRolesResponse.ProtoReflect.Descriptor instead.
 func (*GetUserRolesResponse) Descriptor() ([]byte, []int) {
-	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{9}
+	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *GetUserRolesResponse) GetRoles() []*Role {
@@ -518,7 +790,7 @@ type AddUserRoleRequest struct {
 func (x *AddUserRoleRequest) Reset() {
 	*x = AddUserRoleRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[10]
+		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[16]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -531,7 +803,7 @@ func (x *AddUserRoleRequest) String() string {
 func (*AddUserRoleRequest) ProtoMessage() {}
 
 func (x *AddUserRoleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[10]
+	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[16]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -544,7 +816,7 @@ func (x *AddUserRoleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddUserRoleRequest.ProtoReflect.Descriptor instead.
 func (*AddUserRoleRequest) Descriptor() ([]byte, []int) {
-	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{10}
+	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *AddUserRoleRequest) GetUserAccountId() string {
@@ -572,7 +844,7 @@ type AddUserRoleResponse struct {
 func (x *AddUserRoleResponse) Reset() {
 	*x = AddUserRoleResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[11]
+		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[17]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -585,7 +857,7 @@ func (x *AddUserRoleResponse) String() string {
 func (*AddUserRoleResponse) ProtoMessage() {}
 
 func (x *AddUserRoleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[11]
+	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[17]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -598,7 +870,7 @@ func (x *AddUserRoleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddUserRoleResponse.ProtoReflect.Descriptor instead.
 func (*AddUserRoleResponse) Descriptor() ([]byte, []int) {
-	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{11}
+	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *AddUserRoleResponse) GetAddedRoleIds() []string {
@@ -620,7 +892,7 @@ type RemoveUserRoleRequest struct {
 func (x *RemoveUserRoleRequest) Reset() {
 	*x = RemoveUserRoleRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[12]
+		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[18]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -633,7 +905,7 @@ func (x *RemoveUserRoleRequest) String() string {
 func (*RemoveUserRoleRequest) ProtoMessage() {}
 
 func (x *RemoveUserRoleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[12]
+	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[18]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -646,7 +918,7 @@ func (x *RemoveUserRoleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveUserRoleRequest.ProtoReflect.Descriptor instead.
 func (*RemoveUserRoleRequest) Descriptor() ([]byte, []int) {
-	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{12}
+	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *RemoveUserRoleRequest) GetUserAccountId() string {
@@ -674,7 +946,7 @@ type RemoveUserRoleResponse struct {
 func (x *RemoveUserRoleResponse) Reset() {
 	*x = RemoveUserRoleResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[13]
+		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[19]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -687,7 +959,7 @@ func (x *RemoveUserRoleResponse) String() string {
 func (*RemoveUserRoleResponse) ProtoMessage() {}
 
 func (x *RemoveUserRoleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[13]
+	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[19]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -700,7 +972,7 @@ func (x *RemoveUserRoleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveUserRoleResponse.ProtoReflect.Descriptor instead.
 func (*RemoveUserRoleResponse) Descriptor() ([]byte, []int) {
-	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{13}
+	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *RemoveUserRoleResponse) GetRemovedRoleIds() []string {
@@ -722,7 +994,7 @@ type AddUserPermissionRequest struct {
 func (x *AddUserPermissionRequest) Reset() {
 	*x = AddUserPermissionRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[14]
+		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[20]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -735,7 +1007,7 @@ func (x *AddUserPermissionRequest) String() string {
 func (*AddUserPermissionRequest) ProtoMessage() {}
 
 func (x *AddUserPermissionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[14]
+	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[20]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -748,7 +1020,7 @@ func (x *AddUserPermissionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddUserPermissionRequest.ProtoReflect.Descriptor instead.
 func (*AddUserPermissionRequest) Descriptor() ([]byte, []int) {
-	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{14}
+	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *AddUserPermissionRequest) GetUserAccountId() string {
@@ -776,7 +1048,7 @@ type AddUserPermissionResponse struct {
 func (x *AddUserPermissionResponse) Reset() {
 	*x = AddUserPermissionResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[15]
+		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[21]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -789,7 +1061,7 @@ func (x *AddUserPermissionResponse) String() string {
 func (*AddUserPermissionResponse) ProtoMessage() {}
 
 func (x *AddUserPermissionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[15]
+	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[21]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -802,7 +1074,7 @@ func (x *AddUserPermissionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddUserPermissionResponse.ProtoReflect.Descriptor instead.
 func (*AddUserPermissionResponse) Descriptor() ([]byte, []int) {
-	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{15}
+	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *AddUserPermissionResponse) GetAddedPermissions() []string {
@@ -824,7 +1096,7 @@ type RemoveUserPermissionRequest struct {
 func (x *RemoveUserPermissionRequest) Reset() {
 	*x = RemoveUserPermissionRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[16]
+		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[22]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -837,7 +1109,7 @@ func (x *RemoveUserPermissionRequest) String() string {
 func (*RemoveUserPermissionRequest) ProtoMessage() {}
 
 func (x *RemoveUserPermissionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[16]
+	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[22]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -850,7 +1122,7 @@ func (x *RemoveUserPermissionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveUserPermissionRequest.ProtoReflect.Descriptor instead.
 func (*RemoveUserPermissionRequest) Descriptor() ([]byte, []int) {
-	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{16}
+	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *RemoveUserPermissionRequest) GetUserAccountId() string {
@@ -878,7 +1150,7 @@ type RemoveUserPermissionResponse struct {
 func (x *RemoveUserPermissionResponse) Reset() {
 	*x = RemoveUserPermissionResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[17]
+		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[23]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -891,7 +1163,7 @@ func (x *RemoveUserPermissionResponse) String() string {
 func (*RemoveUserPermissionResponse) ProtoMessage() {}
 
 func (x *RemoveUserPermissionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[17]
+	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[23]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -904,7 +1176,7 @@ func (x *RemoveUserPermissionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveUserPermissionResponse.ProtoReflect.Descriptor instead.
 func (*RemoveUserPermissionResponse) Descriptor() ([]byte, []int) {
-	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{17}
+	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *RemoveUserPermissionResponse) GetRemovedPermissions() []string {
@@ -919,17 +1191,29 @@ type Role struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id          string   `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Priority    int32    `protobuf:"varint,2,opt,name=priority,proto3" json:"priority,omitempty"`
-	Transient   bool     `protobuf:"varint,3,opt,name=transient,proto3" json:"transient,omitempty"`
-	Color       string   `protobuf:"bytes,4,opt,name=color,proto3" json:"color,omitempty"`
+	// The id of the role, e.g. `minecraft_player`
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	// Priority of the role is used when multiple roles
+	// get assigned to a user and we have to determine which
+	// properties get inherited or overwritten by which roles.
+	Priority int32 `protobuf:"varint,2,opt,name=priority,proto3" json:"priority,omitempty"`
+	// Transient means that the role is simply used for inheritance purposes
+	// and will not overwrite any permissions from any role.
+	// The exception is when checking with two transient roles, than the priority
+	// will be used to determine which overwrites which.
+	Transient bool `protobuf:"varint,3,opt,name=transient,proto3" json:"transient,omitempty"`
+	// A hex color string (e.g. `4a2f30`) to set the general display color
+	// for this role across all systems (Minecraft network, webpages, ...).
+	Color string `protobuf:"bytes,4,opt,name=color,proto3" json:"color,omitempty"`
+	// A list of permissions that are directly binded to this role.
+	// A permission is a dot seperated string which only contains [a-Z0-9\*].
 	Permissions []string `protobuf:"bytes,5,rep,name=permissions,proto3" json:"permissions,omitempty"`
 }
 
 func (x *Role) Reset() {
 	*x = Role{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[18]
+		mi := &file_cow_indigo_v1_indigo_proto_msgTypes[24]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -942,7 +1226,7 @@ func (x *Role) String() string {
 func (*Role) ProtoMessage() {}
 
 func (x *Role) ProtoReflect() protoreflect.Message {
-	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[18]
+	mi := &file_cow_indigo_v1_indigo_proto_msgTypes[24]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -955,7 +1239,7 @@ func (x *Role) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Role.ProtoReflect.Descriptor instead.
 func (*Role) Descriptor() ([]byte, []int) {
-	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{18}
+	return file_cow_indigo_v1_indigo_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *Role) GetId() string {
@@ -998,21 +1282,43 @@ var File_cow_indigo_v1_indigo_proto protoreflect.FileDescriptor
 var file_cow_indigo_v1_indigo_proto_rawDesc = []byte{
 	0x0a, 0x1a, 0x63, 0x6f, 0x77, 0x2f, 0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x2f, 0x76, 0x31, 0x2f,
 	0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x0d, 0x63, 0x6f,
-	0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x2e, 0x76, 0x31, 0x22, 0x29, 0x0a, 0x0e, 0x47,
-	0x65, 0x74, 0x52, 0x6f, 0x6c, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x17, 0x0a,
-	0x07, 0x72, 0x6f, 0x6c, 0x65, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06,
-	0x72, 0x6f, 0x6c, 0x65, 0x49, 0x64, 0x22, 0x3a, 0x0a, 0x0f, 0x47, 0x65, 0x74, 0x52, 0x6f, 0x6c,
-	0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x27, 0x0a, 0x04, 0x72, 0x6f, 0x6c,
-	0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x13, 0x2e, 0x63, 0x6f, 0x77, 0x2e, 0x69, 0x6e,
-	0x64, 0x69, 0x67, 0x6f, 0x2e, 0x76, 0x31, 0x2e, 0x52, 0x6f, 0x6c, 0x65, 0x52, 0x04, 0x72, 0x6f,
-	0x6c, 0x65, 0x22, 0x3c, 0x0a, 0x11, 0x49, 0x6e, 0x73, 0x65, 0x72, 0x74, 0x52, 0x6f, 0x6c, 0x65,
-	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x27, 0x0a, 0x04, 0x72, 0x6f, 0x6c, 0x65, 0x18,
-	0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x13, 0x2e, 0x63, 0x6f, 0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69,
-	0x67, 0x6f, 0x2e, 0x76, 0x31, 0x2e, 0x52, 0x6f, 0x6c, 0x65, 0x52, 0x04, 0x72, 0x6f, 0x6c, 0x65,
-	0x22, 0x34, 0x0a, 0x12, 0x49, 0x6e, 0x73, 0x65, 0x72, 0x74, 0x52, 0x6f, 0x6c, 0x65, 0x52, 0x65,
-	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x1e, 0x0a, 0x0a, 0x73, 0x75, 0x63, 0x63, 0x65, 0x73,
-	0x73, 0x66, 0x75, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x0a, 0x73, 0x75, 0x63, 0x63,
-	0x65, 0x73, 0x73, 0x66, 0x75, 0x6c, 0x22, 0x55, 0x0a, 0x18, 0x41, 0x64, 0x64, 0x52, 0x6f, 0x6c,
+	0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x2e, 0x76, 0x31, 0x22, 0x12, 0x0a, 0x10, 0x4c,
+	0x69, 0x73, 0x74, 0x52, 0x6f, 0x6c, 0x65, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22,
+	0x3e, 0x0a, 0x11, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x6f, 0x6c, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x29, 0x0a, 0x05, 0x72, 0x6f, 0x6c, 0x65, 0x73, 0x18, 0x01, 0x20,
+	0x03, 0x28, 0x0b, 0x32, 0x13, 0x2e, 0x63, 0x6f, 0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f,
+	0x2e, 0x76, 0x31, 0x2e, 0x52, 0x6f, 0x6c, 0x65, 0x52, 0x05, 0x72, 0x6f, 0x6c, 0x65, 0x73, 0x22,
+	0x29, 0x0a, 0x0e, 0x47, 0x65, 0x74, 0x52, 0x6f, 0x6c, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
+	0x74, 0x12, 0x17, 0x0a, 0x07, 0x72, 0x6f, 0x6c, 0x65, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x06, 0x72, 0x6f, 0x6c, 0x65, 0x49, 0x64, 0x22, 0x3a, 0x0a, 0x0f, 0x47, 0x65,
+	0x74, 0x52, 0x6f, 0x6c, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x27, 0x0a,
+	0x04, 0x72, 0x6f, 0x6c, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x13, 0x2e, 0x63, 0x6f,
+	0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x2e, 0x76, 0x31, 0x2e, 0x52, 0x6f, 0x6c, 0x65,
+	0x52, 0x04, 0x72, 0x6f, 0x6c, 0x65, 0x22, 0x3c, 0x0a, 0x11, 0x49, 0x6e, 0x73, 0x65, 0x72, 0x74,
+	0x52, 0x6f, 0x6c, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x27, 0x0a, 0x04, 0x72,
+	0x6f, 0x6c, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x13, 0x2e, 0x63, 0x6f, 0x77, 0x2e,
+	0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x2e, 0x76, 0x31, 0x2e, 0x52, 0x6f, 0x6c, 0x65, 0x52, 0x04,
+	0x72, 0x6f, 0x6c, 0x65, 0x22, 0x4e, 0x0a, 0x12, 0x49, 0x6e, 0x73, 0x65, 0x72, 0x74, 0x52, 0x6f,
+	0x6c, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x38, 0x0a, 0x0d, 0x69, 0x6e,
+	0x73, 0x65, 0x72, 0x74, 0x65, 0x64, 0x5f, 0x72, 0x6f, 0x6c, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x0b, 0x32, 0x13, 0x2e, 0x63, 0x6f, 0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x2e, 0x76,
+	0x31, 0x2e, 0x52, 0x6f, 0x6c, 0x65, 0x52, 0x0c, 0x69, 0x6e, 0x73, 0x65, 0x72, 0x74, 0x65, 0x64,
+	0x52, 0x6f, 0x6c, 0x65, 0x22, 0x5e, 0x0a, 0x11, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x52, 0x6f,
+	0x6c, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x17, 0x0a, 0x07, 0x72, 0x6f, 0x6c,
+	0x65, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x72, 0x6f, 0x6c, 0x65,
+	0x49, 0x64, 0x12, 0x30, 0x0a, 0x09, 0x72, 0x6f, 0x6c, 0x65, 0x5f, 0x64, 0x61, 0x74, 0x61, 0x18,
+	0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x13, 0x2e, 0x63, 0x6f, 0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69,
+	0x67, 0x6f, 0x2e, 0x76, 0x31, 0x2e, 0x52, 0x6f, 0x6c, 0x65, 0x52, 0x08, 0x72, 0x6f, 0x6c, 0x65,
+	0x44, 0x61, 0x74, 0x61, 0x22, 0x4c, 0x0a, 0x12, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x52, 0x6f,
+	0x6c, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x36, 0x0a, 0x0c, 0x75, 0x70,
+	0x64, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x72, 0x6f, 0x6c, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b,
+	0x32, 0x13, 0x2e, 0x63, 0x6f, 0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x2e, 0x76, 0x31,
+	0x2e, 0x52, 0x6f, 0x6c, 0x65, 0x52, 0x0b, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x52, 0x6f,
+	0x6c, 0x65, 0x22, 0x2c, 0x0a, 0x11, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x52, 0x6f, 0x6c, 0x65,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x17, 0x0a, 0x07, 0x72, 0x6f, 0x6c, 0x65, 0x5f,
+	0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x72, 0x6f, 0x6c, 0x65, 0x49, 0x64,
+	0x22, 0x14, 0x0a, 0x12, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x52, 0x6f, 0x6c, 0x65, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x55, 0x0a, 0x18, 0x41, 0x64, 0x64, 0x52, 0x6f, 0x6c,
 	0x65, 0x50, 0x65, 0x72, 0x6d, 0x69, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65,
 	0x73, 0x74, 0x12, 0x17, 0x0a, 0x07, 0x72, 0x6f, 0x6c, 0x65, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20,
 	0x01, 0x28, 0x09, 0x52, 0x06, 0x72, 0x6f, 0x6c, 0x65, 0x49, 0x64, 0x12, 0x20, 0x0a, 0x0b, 0x70,
@@ -1092,68 +1398,83 @@ var file_cow_indigo_v1_indigo_proto_rawDesc = []byte{
 	0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x63, 0x6f, 0x6c, 0x6f, 0x72, 0x12, 0x20, 0x0a,
 	0x0b, 0x70, 0x65, 0x72, 0x6d, 0x69, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x73, 0x18, 0x05, 0x20, 0x03,
 	0x28, 0x09, 0x52, 0x0b, 0x70, 0x65, 0x72, 0x6d, 0x69, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x73, 0x32,
-	0xfe, 0x06, 0x0a, 0x0d, 0x49, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63,
-	0x65, 0x12, 0x4a, 0x0a, 0x07, 0x47, 0x65, 0x74, 0x52, 0x6f, 0x6c, 0x65, 0x12, 0x1d, 0x2e, 0x63,
-	0x6f, 0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x2e, 0x76, 0x31, 0x2e, 0x47, 0x65, 0x74,
-	0x52, 0x6f, 0x6c, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1e, 0x2e, 0x63, 0x6f,
-	0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x2e, 0x76, 0x31, 0x2e, 0x47, 0x65, 0x74, 0x52,
-	0x6f, 0x6c, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x53, 0x0a,
-	0x0a, 0x49, 0x6e, 0x73, 0x65, 0x72, 0x74, 0x52, 0x6f, 0x6c, 0x65, 0x12, 0x20, 0x2e, 0x63, 0x6f,
-	0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x2e, 0x76, 0x31, 0x2e, 0x49, 0x6e, 0x73, 0x65,
-	0x72, 0x74, 0x52, 0x6f, 0x6c, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x21, 0x2e,
+	0xfa, 0x08, 0x0a, 0x0d, 0x49, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63,
+	0x65, 0x12, 0x50, 0x0a, 0x09, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x6f, 0x6c, 0x65, 0x73, 0x12, 0x1f,
+	0x2e, 0x63, 0x6f, 0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x2e, 0x76, 0x31, 0x2e, 0x4c,
+	0x69, 0x73, 0x74, 0x52, 0x6f, 0x6c, 0x65, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
+	0x20, 0x2e, 0x63, 0x6f, 0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x2e, 0x76, 0x31, 0x2e,
+	0x4c, 0x69, 0x73, 0x74, 0x52, 0x6f, 0x6c, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
+	0x65, 0x22, 0x00, 0x12, 0x4a, 0x0a, 0x07, 0x47, 0x65, 0x74, 0x52, 0x6f, 0x6c, 0x65, 0x12, 0x1d,
+	0x2e, 0x63, 0x6f, 0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x2e, 0x76, 0x31, 0x2e, 0x47,
+	0x65, 0x74, 0x52, 0x6f, 0x6c, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1e, 0x2e,
+	0x63, 0x6f, 0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x2e, 0x76, 0x31, 0x2e, 0x47, 0x65,
+	0x74, 0x52, 0x6f, 0x6c, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12,
+	0x53, 0x0a, 0x0a, 0x49, 0x6e, 0x73, 0x65, 0x72, 0x74, 0x52, 0x6f, 0x6c, 0x65, 0x12, 0x20, 0x2e,
 	0x63, 0x6f, 0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x2e, 0x76, 0x31, 0x2e, 0x49, 0x6e,
-	0x73, 0x65, 0x72, 0x74, 0x52, 0x6f, 0x6c, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
-	0x22, 0x00, 0x12, 0x68, 0x0a, 0x11, 0x41, 0x64, 0x64, 0x52, 0x6f, 0x6c, 0x65, 0x50, 0x65, 0x72,
-	0x6d, 0x69, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x27, 0x2e, 0x63, 0x6f, 0x77, 0x2e, 0x69, 0x6e,
-	0x64, 0x69, 0x67, 0x6f, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x64, 0x52, 0x6f, 0x6c, 0x65, 0x50,
-	0x65, 0x72, 0x6d, 0x69, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
-	0x1a, 0x28, 0x2e, 0x63, 0x6f, 0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x2e, 0x76, 0x31,
-	0x2e, 0x41, 0x64, 0x64, 0x52, 0x6f, 0x6c, 0x65, 0x50, 0x65, 0x72, 0x6d, 0x69, 0x73, 0x73, 0x69,
-	0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x71, 0x0a, 0x14,
-	0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x52, 0x6f, 0x6c, 0x65, 0x50, 0x65, 0x72, 0x6d, 0x69, 0x73,
-	0x73, 0x69, 0x6f, 0x6e, 0x12, 0x2a, 0x2e, 0x63, 0x6f, 0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69, 0x67,
-	0x6f, 0x2e, 0x76, 0x31, 0x2e, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x52, 0x6f, 0x6c, 0x65, 0x50,
-	0x65, 0x72, 0x6d, 0x69, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
-	0x1a, 0x2b, 0x2e, 0x63, 0x6f, 0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x2e, 0x76, 0x31,
-	0x2e, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x52, 0x6f, 0x6c, 0x65, 0x50, 0x65, 0x72, 0x6d, 0x69,
-	0x73, 0x73, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12,
-	0x59, 0x0a, 0x0c, 0x47, 0x65, 0x74, 0x55, 0x73, 0x65, 0x72, 0x52, 0x6f, 0x6c, 0x65, 0x73, 0x12,
-	0x22, 0x2e, 0x63, 0x6f, 0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x2e, 0x76, 0x31, 0x2e,
-	0x47, 0x65, 0x74, 0x55, 0x73, 0x65, 0x72, 0x52, 0x6f, 0x6c, 0x65, 0x73, 0x52, 0x65, 0x71, 0x75,
-	0x65, 0x73, 0x74, 0x1a, 0x23, 0x2e, 0x63, 0x6f, 0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f,
-	0x2e, 0x76, 0x31, 0x2e, 0x47, 0x65, 0x74, 0x55, 0x73, 0x65, 0x72, 0x52, 0x6f, 0x6c, 0x65, 0x73,
-	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x56, 0x0a, 0x0b, 0x41, 0x64,
-	0x64, 0x55, 0x73, 0x65, 0x72, 0x52, 0x6f, 0x6c, 0x65, 0x12, 0x21, 0x2e, 0x63, 0x6f, 0x77, 0x2e,
-	0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x64, 0x55, 0x73, 0x65,
-	0x72, 0x52, 0x6f, 0x6c, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x22, 0x2e, 0x63,
+	0x73, 0x65, 0x72, 0x74, 0x52, 0x6f, 0x6c, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
+	0x21, 0x2e, 0x63, 0x6f, 0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x2e, 0x76, 0x31, 0x2e,
+	0x49, 0x6e, 0x73, 0x65, 0x72, 0x74, 0x52, 0x6f, 0x6c, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x22, 0x00, 0x12, 0x53, 0x0a, 0x0a, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x52, 0x6f,
+	0x6c, 0x65, 0x12, 0x20, 0x2e, 0x63, 0x6f, 0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x2e,
+	0x76, 0x31, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x52, 0x6f, 0x6c, 0x65, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x1a, 0x21, 0x2e, 0x63, 0x6f, 0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69, 0x67,
+	0x6f, 0x2e, 0x76, 0x31, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x52, 0x6f, 0x6c, 0x65, 0x52,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x53, 0x0a, 0x0a, 0x44, 0x65, 0x6c,
+	0x65, 0x74, 0x65, 0x52, 0x6f, 0x6c, 0x65, 0x12, 0x20, 0x2e, 0x63, 0x6f, 0x77, 0x2e, 0x69, 0x6e,
+	0x64, 0x69, 0x67, 0x6f, 0x2e, 0x76, 0x31, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x52, 0x6f,
+	0x6c, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x21, 0x2e, 0x63, 0x6f, 0x77, 0x2e,
+	0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x2e, 0x76, 0x31, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65,
+	0x52, 0x6f, 0x6c, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x68,
+	0x0a, 0x11, 0x41, 0x64, 0x64, 0x52, 0x6f, 0x6c, 0x65, 0x50, 0x65, 0x72, 0x6d, 0x69, 0x73, 0x73,
+	0x69, 0x6f, 0x6e, 0x12, 0x27, 0x2e, 0x63, 0x6f, 0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f,
+	0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x64, 0x52, 0x6f, 0x6c, 0x65, 0x50, 0x65, 0x72, 0x6d, 0x69,
+	0x73, 0x73, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x28, 0x2e, 0x63,
 	0x6f, 0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x64,
-	0x55, 0x73, 0x65, 0x72, 0x52, 0x6f, 0x6c, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
-	0x22, 0x00, 0x12, 0x5f, 0x0a, 0x0e, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x55, 0x73, 0x65, 0x72,
-	0x52, 0x6f, 0x6c, 0x65, 0x12, 0x24, 0x2e, 0x63, 0x6f, 0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69, 0x67,
-	0x6f, 0x2e, 0x76, 0x31, 0x2e, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x55, 0x73, 0x65, 0x72, 0x52,
-	0x6f, 0x6c, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x25, 0x2e, 0x63, 0x6f, 0x77,
-	0x2e, 0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x2e, 0x76, 0x31, 0x2e, 0x52, 0x65, 0x6d, 0x6f, 0x76,
-	0x65, 0x55, 0x73, 0x65, 0x72, 0x52, 0x6f, 0x6c, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
-	0x65, 0x22, 0x00, 0x12, 0x68, 0x0a, 0x11, 0x41, 0x64, 0x64, 0x55, 0x73, 0x65, 0x72, 0x50, 0x65,
-	0x72, 0x6d, 0x69, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x27, 0x2e, 0x63, 0x6f, 0x77, 0x2e, 0x69,
+	0x52, 0x6f, 0x6c, 0x65, 0x50, 0x65, 0x72, 0x6d, 0x69, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x71, 0x0a, 0x14, 0x52, 0x65, 0x6d, 0x6f,
+	0x76, 0x65, 0x52, 0x6f, 0x6c, 0x65, 0x50, 0x65, 0x72, 0x6d, 0x69, 0x73, 0x73, 0x69, 0x6f, 0x6e,
+	0x12, 0x2a, 0x2e, 0x63, 0x6f, 0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x2e, 0x76, 0x31,
+	0x2e, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x52, 0x6f, 0x6c, 0x65, 0x50, 0x65, 0x72, 0x6d, 0x69,
+	0x73, 0x73, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x2b, 0x2e, 0x63,
+	0x6f, 0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x2e, 0x76, 0x31, 0x2e, 0x52, 0x65, 0x6d,
+	0x6f, 0x76, 0x65, 0x52, 0x6f, 0x6c, 0x65, 0x50, 0x65, 0x72, 0x6d, 0x69, 0x73, 0x73, 0x69, 0x6f,
+	0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x59, 0x0a, 0x0c, 0x47,
+	0x65, 0x74, 0x55, 0x73, 0x65, 0x72, 0x52, 0x6f, 0x6c, 0x65, 0x73, 0x12, 0x22, 0x2e, 0x63, 0x6f,
+	0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x2e, 0x76, 0x31, 0x2e, 0x47, 0x65, 0x74, 0x55,
+	0x73, 0x65, 0x72, 0x52, 0x6f, 0x6c, 0x65, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
+	0x23, 0x2e, 0x63, 0x6f, 0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x2e, 0x76, 0x31, 0x2e,
+	0x47, 0x65, 0x74, 0x55, 0x73, 0x65, 0x72, 0x52, 0x6f, 0x6c, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x56, 0x0a, 0x0b, 0x41, 0x64, 0x64, 0x55, 0x73, 0x65,
+	0x72, 0x52, 0x6f, 0x6c, 0x65, 0x12, 0x21, 0x2e, 0x63, 0x6f, 0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69,
+	0x67, 0x6f, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x64, 0x55, 0x73, 0x65, 0x72, 0x52, 0x6f, 0x6c,
+	0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x22, 0x2e, 0x63, 0x6f, 0x77, 0x2e, 0x69,
 	0x6e, 0x64, 0x69, 0x67, 0x6f, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x64, 0x55, 0x73, 0x65, 0x72,
-	0x50, 0x65, 0x72, 0x6d, 0x69, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
-	0x74, 0x1a, 0x28, 0x2e, 0x63, 0x6f, 0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x2e, 0x76,
-	0x31, 0x2e, 0x41, 0x64, 0x64, 0x55, 0x73, 0x65, 0x72, 0x50, 0x65, 0x72, 0x6d, 0x69, 0x73, 0x73,
-	0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x71, 0x0a,
-	0x14, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x55, 0x73, 0x65, 0x72, 0x50, 0x65, 0x72, 0x6d, 0x69,
-	0x73, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x2a, 0x2e, 0x63, 0x6f, 0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69,
-	0x67, 0x6f, 0x2e, 0x76, 0x31, 0x2e, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x55, 0x73, 0x65, 0x72,
-	0x50, 0x65, 0x72, 0x6d, 0x69, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
-	0x74, 0x1a, 0x2b, 0x2e, 0x63, 0x6f, 0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x2e, 0x76,
+	0x52, 0x6f, 0x6c, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x5f,
+	0x0a, 0x0e, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x55, 0x73, 0x65, 0x72, 0x52, 0x6f, 0x6c, 0x65,
+	0x12, 0x24, 0x2e, 0x63, 0x6f, 0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x2e, 0x76, 0x31,
+	0x2e, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x55, 0x73, 0x65, 0x72, 0x52, 0x6f, 0x6c, 0x65, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x25, 0x2e, 0x63, 0x6f, 0x77, 0x2e, 0x69, 0x6e, 0x64,
+	0x69, 0x67, 0x6f, 0x2e, 0x76, 0x31, 0x2e, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x55, 0x73, 0x65,
+	0x72, 0x52, 0x6f, 0x6c, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12,
+	0x68, 0x0a, 0x11, 0x41, 0x64, 0x64, 0x55, 0x73, 0x65, 0x72, 0x50, 0x65, 0x72, 0x6d, 0x69, 0x73,
+	0x73, 0x69, 0x6f, 0x6e, 0x12, 0x27, 0x2e, 0x63, 0x6f, 0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69, 0x67,
+	0x6f, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x64, 0x55, 0x73, 0x65, 0x72, 0x50, 0x65, 0x72, 0x6d,
+	0x69, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x28, 0x2e,
+	0x63, 0x6f, 0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64,
+	0x64, 0x55, 0x73, 0x65, 0x72, 0x50, 0x65, 0x72, 0x6d, 0x69, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x52,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x71, 0x0a, 0x14, 0x52, 0x65, 0x6d,
+	0x6f, 0x76, 0x65, 0x55, 0x73, 0x65, 0x72, 0x50, 0x65, 0x72, 0x6d, 0x69, 0x73, 0x73, 0x69, 0x6f,
+	0x6e, 0x12, 0x2a, 0x2e, 0x63, 0x6f, 0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x2e, 0x76,
 	0x31, 0x2e, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x55, 0x73, 0x65, 0x72, 0x50, 0x65, 0x72, 0x6d,
-	0x69, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00,
-	0x42, 0x49, 0x0a, 0x1d, 0x6e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x2e, 0x63, 0x6f, 0x77, 0x2e,
-	0x6d, 0x6f, 0x6f, 0x61, 0x70, 0x69, 0x73, 0x2e, 0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x2e, 0x76,
-	0x31, 0x50, 0x01, 0x5a, 0x26, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f,
-	0x63, 0x6f, 0x77, 0x6e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x2f, 0x69, 0x6e, 0x64, 0x69, 0x67,
-	0x6f, 0x2f, 0x76, 0x31, 0x3b, 0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f,
-	0x74, 0x6f, 0x33,
+	0x69, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x2b, 0x2e,
+	0x63, 0x6f, 0x77, 0x2e, 0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x2e, 0x76, 0x31, 0x2e, 0x52, 0x65,
+	0x6d, 0x6f, 0x76, 0x65, 0x55, 0x73, 0x65, 0x72, 0x50, 0x65, 0x72, 0x6d, 0x69, 0x73, 0x73, 0x69,
+	0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x42, 0x49, 0x0a, 0x1d,
+	0x6e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x2e, 0x63, 0x6f, 0x77, 0x2e, 0x6d, 0x6f, 0x6f, 0x61,
+	0x70, 0x69, 0x73, 0x2e, 0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x2e, 0x76, 0x31, 0x50, 0x01, 0x5a,
+	0x26, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x63, 0x6f, 0x77, 0x6e,
+	0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x2f, 0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x2f, 0x76, 0x31,
+	0x3b, 0x69, 0x6e, 0x64, 0x69, 0x67, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1168,55 +1489,71 @@ func file_cow_indigo_v1_indigo_proto_rawDescGZIP() []byte {
 	return file_cow_indigo_v1_indigo_proto_rawDescData
 }
 
-var file_cow_indigo_v1_indigo_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
+var file_cow_indigo_v1_indigo_proto_msgTypes = make([]protoimpl.MessageInfo, 25)
 var file_cow_indigo_v1_indigo_proto_goTypes = []interface{}{
-	(*GetRoleRequest)(nil),               // 0: cow.indigo.v1.GetRoleRequest
-	(*GetRoleResponse)(nil),              // 1: cow.indigo.v1.GetRoleResponse
-	(*InsertRoleRequest)(nil),            // 2: cow.indigo.v1.InsertRoleRequest
-	(*InsertRoleResponse)(nil),           // 3: cow.indigo.v1.InsertRoleResponse
-	(*AddRolePermissionRequest)(nil),     // 4: cow.indigo.v1.AddRolePermissionRequest
-	(*AddRolePermissionResponse)(nil),    // 5: cow.indigo.v1.AddRolePermissionResponse
-	(*RemoveRolePermissionRequest)(nil),  // 6: cow.indigo.v1.RemoveRolePermissionRequest
-	(*RemoveRolePermissionResponse)(nil), // 7: cow.indigo.v1.RemoveRolePermissionResponse
-	(*GetUserRolesRequest)(nil),          // 8: cow.indigo.v1.GetUserRolesRequest
-	(*GetUserRolesResponse)(nil),         // 9: cow.indigo.v1.GetUserRolesResponse
-	(*AddUserRoleRequest)(nil),           // 10: cow.indigo.v1.AddUserRoleRequest
-	(*AddUserRoleResponse)(nil),          // 11: cow.indigo.v1.AddUserRoleResponse
-	(*RemoveUserRoleRequest)(nil),        // 12: cow.indigo.v1.RemoveUserRoleRequest
-	(*RemoveUserRoleResponse)(nil),       // 13: cow.indigo.v1.RemoveUserRoleResponse
-	(*AddUserPermissionRequest)(nil),     // 14: cow.indigo.v1.AddUserPermissionRequest
-	(*AddUserPermissionResponse)(nil),    // 15: cow.indigo.v1.AddUserPermissionResponse
-	(*RemoveUserPermissionRequest)(nil),  // 16: cow.indigo.v1.RemoveUserPermissionRequest
-	(*RemoveUserPermissionResponse)(nil), // 17: cow.indigo.v1.RemoveUserPermissionResponse
-	(*Role)(nil),                         // 18: cow.indigo.v1.Role
+	(*ListRolesRequest)(nil),             // 0: cow.indigo.v1.ListRolesRequest
+	(*ListRolesResponse)(nil),            // 1: cow.indigo.v1.ListRolesResponse
+	(*GetRoleRequest)(nil),               // 2: cow.indigo.v1.GetRoleRequest
+	(*GetRoleResponse)(nil),              // 3: cow.indigo.v1.GetRoleResponse
+	(*InsertRoleRequest)(nil),            // 4: cow.indigo.v1.InsertRoleRequest
+	(*InsertRoleResponse)(nil),           // 5: cow.indigo.v1.InsertRoleResponse
+	(*UpdateRoleRequest)(nil),            // 6: cow.indigo.v1.UpdateRoleRequest
+	(*UpdateRoleResponse)(nil),           // 7: cow.indigo.v1.UpdateRoleResponse
+	(*DeleteRoleRequest)(nil),            // 8: cow.indigo.v1.DeleteRoleRequest
+	(*DeleteRoleResponse)(nil),           // 9: cow.indigo.v1.DeleteRoleResponse
+	(*AddRolePermissionRequest)(nil),     // 10: cow.indigo.v1.AddRolePermissionRequest
+	(*AddRolePermissionResponse)(nil),    // 11: cow.indigo.v1.AddRolePermissionResponse
+	(*RemoveRolePermissionRequest)(nil),  // 12: cow.indigo.v1.RemoveRolePermissionRequest
+	(*RemoveRolePermissionResponse)(nil), // 13: cow.indigo.v1.RemoveRolePermissionResponse
+	(*GetUserRolesRequest)(nil),          // 14: cow.indigo.v1.GetUserRolesRequest
+	(*GetUserRolesResponse)(nil),         // 15: cow.indigo.v1.GetUserRolesResponse
+	(*AddUserRoleRequest)(nil),           // 16: cow.indigo.v1.AddUserRoleRequest
+	(*AddUserRoleResponse)(nil),          // 17: cow.indigo.v1.AddUserRoleResponse
+	(*RemoveUserRoleRequest)(nil),        // 18: cow.indigo.v1.RemoveUserRoleRequest
+	(*RemoveUserRoleResponse)(nil),       // 19: cow.indigo.v1.RemoveUserRoleResponse
+	(*AddUserPermissionRequest)(nil),     // 20: cow.indigo.v1.AddUserPermissionRequest
+	(*AddUserPermissionResponse)(nil),    // 21: cow.indigo.v1.AddUserPermissionResponse
+	(*RemoveUserPermissionRequest)(nil),  // 22: cow.indigo.v1.RemoveUserPermissionRequest
+	(*RemoveUserPermissionResponse)(nil), // 23: cow.indigo.v1.RemoveUserPermissionResponse
+	(*Role)(nil),                         // 24: cow.indigo.v1.Role
 }
 var file_cow_indigo_v1_indigo_proto_depIdxs = []int32{
-	18, // 0: cow.indigo.v1.GetRoleResponse.role:type_name -> cow.indigo.v1.Role
-	18, // 1: cow.indigo.v1.InsertRoleRequest.role:type_name -> cow.indigo.v1.Role
-	18, // 2: cow.indigo.v1.GetUserRolesResponse.roles:type_name -> cow.indigo.v1.Role
-	0,  // 3: cow.indigo.v1.IndigoService.GetRole:input_type -> cow.indigo.v1.GetRoleRequest
-	2,  // 4: cow.indigo.v1.IndigoService.InsertRole:input_type -> cow.indigo.v1.InsertRoleRequest
-	4,  // 5: cow.indigo.v1.IndigoService.AddRolePermission:input_type -> cow.indigo.v1.AddRolePermissionRequest
-	6,  // 6: cow.indigo.v1.IndigoService.RemoveRolePermission:input_type -> cow.indigo.v1.RemoveRolePermissionRequest
-	8,  // 7: cow.indigo.v1.IndigoService.GetUserRoles:input_type -> cow.indigo.v1.GetUserRolesRequest
-	10, // 8: cow.indigo.v1.IndigoService.AddUserRole:input_type -> cow.indigo.v1.AddUserRoleRequest
-	12, // 9: cow.indigo.v1.IndigoService.RemoveUserRole:input_type -> cow.indigo.v1.RemoveUserRoleRequest
-	14, // 10: cow.indigo.v1.IndigoService.AddUserPermission:input_type -> cow.indigo.v1.AddUserPermissionRequest
-	16, // 11: cow.indigo.v1.IndigoService.RemoveUserPermission:input_type -> cow.indigo.v1.RemoveUserPermissionRequest
-	1,  // 12: cow.indigo.v1.IndigoService.GetRole:output_type -> cow.indigo.v1.GetRoleResponse
-	3,  // 13: cow.indigo.v1.IndigoService.InsertRole:output_type -> cow.indigo.v1.InsertRoleResponse
-	5,  // 14: cow.indigo.v1.IndigoService.AddRolePermission:output_type -> cow.indigo.v1.AddRolePermissionResponse
-	7,  // 15: cow.indigo.v1.IndigoService.RemoveRolePermission:output_type -> cow.indigo.v1.RemoveRolePermissionResponse
-	9,  // 16: cow.indigo.v1.IndigoService.GetUserRoles:output_type -> cow.indigo.v1.GetUserRolesResponse
-	11, // 17: cow.indigo.v1.IndigoService.AddUserRole:output_type -> cow.indigo.v1.AddUserRoleResponse
-	13, // 18: cow.indigo.v1.IndigoService.RemoveUserRole:output_type -> cow.indigo.v1.RemoveUserRoleResponse
-	15, // 19: cow.indigo.v1.IndigoService.AddUserPermission:output_type -> cow.indigo.v1.AddUserPermissionResponse
-	17, // 20: cow.indigo.v1.IndigoService.RemoveUserPermission:output_type -> cow.indigo.v1.RemoveUserPermissionResponse
-	12, // [12:21] is the sub-list for method output_type
-	3,  // [3:12] is the sub-list for method input_type
-	3,  // [3:3] is the sub-list for extension type_name
-	3,  // [3:3] is the sub-list for extension extendee
-	0,  // [0:3] is the sub-list for field type_name
+	24, // 0: cow.indigo.v1.ListRolesResponse.roles:type_name -> cow.indigo.v1.Role
+	24, // 1: cow.indigo.v1.GetRoleResponse.role:type_name -> cow.indigo.v1.Role
+	24, // 2: cow.indigo.v1.InsertRoleRequest.role:type_name -> cow.indigo.v1.Role
+	24, // 3: cow.indigo.v1.InsertRoleResponse.inserted_role:type_name -> cow.indigo.v1.Role
+	24, // 4: cow.indigo.v1.UpdateRoleRequest.role_data:type_name -> cow.indigo.v1.Role
+	24, // 5: cow.indigo.v1.UpdateRoleResponse.updated_role:type_name -> cow.indigo.v1.Role
+	24, // 6: cow.indigo.v1.GetUserRolesResponse.roles:type_name -> cow.indigo.v1.Role
+	0,  // 7: cow.indigo.v1.IndigoService.ListRoles:input_type -> cow.indigo.v1.ListRolesRequest
+	2,  // 8: cow.indigo.v1.IndigoService.GetRole:input_type -> cow.indigo.v1.GetRoleRequest
+	4,  // 9: cow.indigo.v1.IndigoService.InsertRole:input_type -> cow.indigo.v1.InsertRoleRequest
+	6,  // 10: cow.indigo.v1.IndigoService.UpdateRole:input_type -> cow.indigo.v1.UpdateRoleRequest
+	8,  // 11: cow.indigo.v1.IndigoService.DeleteRole:input_type -> cow.indigo.v1.DeleteRoleRequest
+	10, // 12: cow.indigo.v1.IndigoService.AddRolePermission:input_type -> cow.indigo.v1.AddRolePermissionRequest
+	12, // 13: cow.indigo.v1.IndigoService.RemoveRolePermission:input_type -> cow.indigo.v1.RemoveRolePermissionRequest
+	14, // 14: cow.indigo.v1.IndigoService.GetUserRoles:input_type -> cow.indigo.v1.GetUserRolesRequest
+	16, // 15: cow.indigo.v1.IndigoService.AddUserRole:input_type -> cow.indigo.v1.AddUserRoleRequest
+	18, // 16: cow.indigo.v1.IndigoService.RemoveUserRole:input_type -> cow.indigo.v1.RemoveUserRoleRequest
+	20, // 17: cow.indigo.v1.IndigoService.AddUserPermission:input_type -> cow.indigo.v1.AddUserPermissionRequest
+	22, // 18: cow.indigo.v1.IndigoService.RemoveUserPermission:input_type -> cow.indigo.v1.RemoveUserPermissionRequest
+	1,  // 19: cow.indigo.v1.IndigoService.ListRoles:output_type -> cow.indigo.v1.ListRolesResponse
+	3,  // 20: cow.indigo.v1.IndigoService.GetRole:output_type -> cow.indigo.v1.GetRoleResponse
+	5,  // 21: cow.indigo.v1.IndigoService.InsertRole:output_type -> cow.indigo.v1.InsertRoleResponse
+	7,  // 22: cow.indigo.v1.IndigoService.UpdateRole:output_type -> cow.indigo.v1.UpdateRoleResponse
+	9,  // 23: cow.indigo.v1.IndigoService.DeleteRole:output_type -> cow.indigo.v1.DeleteRoleResponse
+	11, // 24: cow.indigo.v1.IndigoService.AddRolePermission:output_type -> cow.indigo.v1.AddRolePermissionResponse
+	13, // 25: cow.indigo.v1.IndigoService.RemoveRolePermission:output_type -> cow.indigo.v1.RemoveRolePermissionResponse
+	15, // 26: cow.indigo.v1.IndigoService.GetUserRoles:output_type -> cow.indigo.v1.GetUserRolesResponse
+	17, // 27: cow.indigo.v1.IndigoService.AddUserRole:output_type -> cow.indigo.v1.AddUserRoleResponse
+	19, // 28: cow.indigo.v1.IndigoService.RemoveUserRole:output_type -> cow.indigo.v1.RemoveUserRoleResponse
+	21, // 29: cow.indigo.v1.IndigoService.AddUserPermission:output_type -> cow.indigo.v1.AddUserPermissionResponse
+	23, // 30: cow.indigo.v1.IndigoService.RemoveUserPermission:output_type -> cow.indigo.v1.RemoveUserPermissionResponse
+	19, // [19:31] is the sub-list for method output_type
+	7,  // [7:19] is the sub-list for method input_type
+	7,  // [7:7] is the sub-list for extension type_name
+	7,  // [7:7] is the sub-list for extension extendee
+	0,  // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_cow_indigo_v1_indigo_proto_init() }
@@ -1226,7 +1563,7 @@ func file_cow_indigo_v1_indigo_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_cow_indigo_v1_indigo_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetRoleRequest); i {
+			switch v := v.(*ListRolesRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1238,7 +1575,7 @@ func file_cow_indigo_v1_indigo_proto_init() {
 			}
 		}
 		file_cow_indigo_v1_indigo_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetRoleResponse); i {
+			switch v := v.(*ListRolesResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1250,7 +1587,7 @@ func file_cow_indigo_v1_indigo_proto_init() {
 			}
 		}
 		file_cow_indigo_v1_indigo_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*InsertRoleRequest); i {
+			switch v := v.(*GetRoleRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1262,7 +1599,7 @@ func file_cow_indigo_v1_indigo_proto_init() {
 			}
 		}
 		file_cow_indigo_v1_indigo_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*InsertRoleResponse); i {
+			switch v := v.(*GetRoleResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1274,7 +1611,7 @@ func file_cow_indigo_v1_indigo_proto_init() {
 			}
 		}
 		file_cow_indigo_v1_indigo_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AddRolePermissionRequest); i {
+			switch v := v.(*InsertRoleRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1286,7 +1623,7 @@ func file_cow_indigo_v1_indigo_proto_init() {
 			}
 		}
 		file_cow_indigo_v1_indigo_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AddRolePermissionResponse); i {
+			switch v := v.(*InsertRoleResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1298,7 +1635,7 @@ func file_cow_indigo_v1_indigo_proto_init() {
 			}
 		}
 		file_cow_indigo_v1_indigo_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RemoveRolePermissionRequest); i {
+			switch v := v.(*UpdateRoleRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1310,7 +1647,7 @@ func file_cow_indigo_v1_indigo_proto_init() {
 			}
 		}
 		file_cow_indigo_v1_indigo_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RemoveRolePermissionResponse); i {
+			switch v := v.(*UpdateRoleResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1322,7 +1659,7 @@ func file_cow_indigo_v1_indigo_proto_init() {
 			}
 		}
 		file_cow_indigo_v1_indigo_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetUserRolesRequest); i {
+			switch v := v.(*DeleteRoleRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1334,7 +1671,7 @@ func file_cow_indigo_v1_indigo_proto_init() {
 			}
 		}
 		file_cow_indigo_v1_indigo_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetUserRolesResponse); i {
+			switch v := v.(*DeleteRoleResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1346,7 +1683,7 @@ func file_cow_indigo_v1_indigo_proto_init() {
 			}
 		}
 		file_cow_indigo_v1_indigo_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AddUserRoleRequest); i {
+			switch v := v.(*AddRolePermissionRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1358,7 +1695,7 @@ func file_cow_indigo_v1_indigo_proto_init() {
 			}
 		}
 		file_cow_indigo_v1_indigo_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AddUserRoleResponse); i {
+			switch v := v.(*AddRolePermissionResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1370,7 +1707,7 @@ func file_cow_indigo_v1_indigo_proto_init() {
 			}
 		}
 		file_cow_indigo_v1_indigo_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RemoveUserRoleRequest); i {
+			switch v := v.(*RemoveRolePermissionRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1382,7 +1719,7 @@ func file_cow_indigo_v1_indigo_proto_init() {
 			}
 		}
 		file_cow_indigo_v1_indigo_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RemoveUserRoleResponse); i {
+			switch v := v.(*RemoveRolePermissionResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1394,7 +1731,7 @@ func file_cow_indigo_v1_indigo_proto_init() {
 			}
 		}
 		file_cow_indigo_v1_indigo_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AddUserPermissionRequest); i {
+			switch v := v.(*GetUserRolesRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1406,7 +1743,7 @@ func file_cow_indigo_v1_indigo_proto_init() {
 			}
 		}
 		file_cow_indigo_v1_indigo_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AddUserPermissionResponse); i {
+			switch v := v.(*GetUserRolesResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1418,7 +1755,7 @@ func file_cow_indigo_v1_indigo_proto_init() {
 			}
 		}
 		file_cow_indigo_v1_indigo_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RemoveUserPermissionRequest); i {
+			switch v := v.(*AddUserRoleRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1430,7 +1767,7 @@ func file_cow_indigo_v1_indigo_proto_init() {
 			}
 		}
 		file_cow_indigo_v1_indigo_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RemoveUserPermissionResponse); i {
+			switch v := v.(*AddUserRoleResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1442,6 +1779,78 @@ func file_cow_indigo_v1_indigo_proto_init() {
 			}
 		}
 		file_cow_indigo_v1_indigo_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*RemoveUserRoleRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_cow_indigo_v1_indigo_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*RemoveUserRoleResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_cow_indigo_v1_indigo_proto_msgTypes[20].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*AddUserPermissionRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_cow_indigo_v1_indigo_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*AddUserPermissionResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_cow_indigo_v1_indigo_proto_msgTypes[22].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*RemoveUserPermissionRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_cow_indigo_v1_indigo_proto_msgTypes[23].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*RemoveUserPermissionResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_cow_indigo_v1_indigo_proto_msgTypes[24].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Role); i {
 			case 0:
 				return &v.state
@@ -1460,7 +1869,7 @@ func file_cow_indigo_v1_indigo_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_cow_indigo_v1_indigo_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   19,
+			NumMessages:   25,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

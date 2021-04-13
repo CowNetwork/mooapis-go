@@ -18,8 +18,11 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type IndigoServiceClient interface {
+	ListRoles(ctx context.Context, in *ListRolesRequest, opts ...grpc.CallOption) (*ListRolesResponse, error)
 	GetRole(ctx context.Context, in *GetRoleRequest, opts ...grpc.CallOption) (*GetRoleResponse, error)
 	InsertRole(ctx context.Context, in *InsertRoleRequest, opts ...grpc.CallOption) (*InsertRoleResponse, error)
+	UpdateRole(ctx context.Context, in *UpdateRoleRequest, opts ...grpc.CallOption) (*UpdateRoleResponse, error)
+	DeleteRole(ctx context.Context, in *DeleteRoleRequest, opts ...grpc.CallOption) (*DeleteRoleResponse, error)
 	AddRolePermission(ctx context.Context, in *AddRolePermissionRequest, opts ...grpc.CallOption) (*AddRolePermissionResponse, error)
 	RemoveRolePermission(ctx context.Context, in *RemoveRolePermissionRequest, opts ...grpc.CallOption) (*RemoveRolePermissionResponse, error)
 	GetUserRoles(ctx context.Context, in *GetUserRolesRequest, opts ...grpc.CallOption) (*GetUserRolesResponse, error)
@@ -37,6 +40,15 @@ func NewIndigoServiceClient(cc grpc.ClientConnInterface) IndigoServiceClient {
 	return &indigoServiceClient{cc}
 }
 
+func (c *indigoServiceClient) ListRoles(ctx context.Context, in *ListRolesRequest, opts ...grpc.CallOption) (*ListRolesResponse, error) {
+	out := new(ListRolesResponse)
+	err := c.cc.Invoke(ctx, "/cow.indigo.v1.IndigoService/ListRoles", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *indigoServiceClient) GetRole(ctx context.Context, in *GetRoleRequest, opts ...grpc.CallOption) (*GetRoleResponse, error) {
 	out := new(GetRoleResponse)
 	err := c.cc.Invoke(ctx, "/cow.indigo.v1.IndigoService/GetRole", in, out, opts...)
@@ -49,6 +61,24 @@ func (c *indigoServiceClient) GetRole(ctx context.Context, in *GetRoleRequest, o
 func (c *indigoServiceClient) InsertRole(ctx context.Context, in *InsertRoleRequest, opts ...grpc.CallOption) (*InsertRoleResponse, error) {
 	out := new(InsertRoleResponse)
 	err := c.cc.Invoke(ctx, "/cow.indigo.v1.IndigoService/InsertRole", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *indigoServiceClient) UpdateRole(ctx context.Context, in *UpdateRoleRequest, opts ...grpc.CallOption) (*UpdateRoleResponse, error) {
+	out := new(UpdateRoleResponse)
+	err := c.cc.Invoke(ctx, "/cow.indigo.v1.IndigoService/UpdateRole", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *indigoServiceClient) DeleteRole(ctx context.Context, in *DeleteRoleRequest, opts ...grpc.CallOption) (*DeleteRoleResponse, error) {
+	out := new(DeleteRoleResponse)
+	err := c.cc.Invoke(ctx, "/cow.indigo.v1.IndigoService/DeleteRole", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -122,8 +152,11 @@ func (c *indigoServiceClient) RemoveUserPermission(ctx context.Context, in *Remo
 // All implementations should embed UnimplementedIndigoServiceServer
 // for forward compatibility
 type IndigoServiceServer interface {
+	ListRoles(context.Context, *ListRolesRequest) (*ListRolesResponse, error)
 	GetRole(context.Context, *GetRoleRequest) (*GetRoleResponse, error)
 	InsertRole(context.Context, *InsertRoleRequest) (*InsertRoleResponse, error)
+	UpdateRole(context.Context, *UpdateRoleRequest) (*UpdateRoleResponse, error)
+	DeleteRole(context.Context, *DeleteRoleRequest) (*DeleteRoleResponse, error)
 	AddRolePermission(context.Context, *AddRolePermissionRequest) (*AddRolePermissionResponse, error)
 	RemoveRolePermission(context.Context, *RemoveRolePermissionRequest) (*RemoveRolePermissionResponse, error)
 	GetUserRoles(context.Context, *GetUserRolesRequest) (*GetUserRolesResponse, error)
@@ -137,11 +170,20 @@ type IndigoServiceServer interface {
 type UnimplementedIndigoServiceServer struct {
 }
 
+func (UnimplementedIndigoServiceServer) ListRoles(context.Context, *ListRolesRequest) (*ListRolesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListRoles not implemented")
+}
 func (UnimplementedIndigoServiceServer) GetRole(context.Context, *GetRoleRequest) (*GetRoleResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetRole not implemented")
 }
 func (UnimplementedIndigoServiceServer) InsertRole(context.Context, *InsertRoleRequest) (*InsertRoleResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method InsertRole not implemented")
+}
+func (UnimplementedIndigoServiceServer) UpdateRole(context.Context, *UpdateRoleRequest) (*UpdateRoleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateRole not implemented")
+}
+func (UnimplementedIndigoServiceServer) DeleteRole(context.Context, *DeleteRoleRequest) (*DeleteRoleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteRole not implemented")
 }
 func (UnimplementedIndigoServiceServer) AddRolePermission(context.Context, *AddRolePermissionRequest) (*AddRolePermissionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddRolePermission not implemented")
@@ -176,6 +218,24 @@ func RegisterIndigoServiceServer(s grpc.ServiceRegistrar, srv IndigoServiceServe
 	s.RegisterService(&IndigoService_ServiceDesc, srv)
 }
 
+func _IndigoService_ListRoles_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListRolesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(IndigoServiceServer).ListRoles(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cow.indigo.v1.IndigoService/ListRoles",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(IndigoServiceServer).ListRoles(ctx, req.(*ListRolesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _IndigoService_GetRole_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetRoleRequest)
 	if err := dec(in); err != nil {
@@ -208,6 +268,42 @@ func _IndigoService_InsertRole_Handler(srv interface{}, ctx context.Context, dec
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(IndigoServiceServer).InsertRole(ctx, req.(*InsertRoleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _IndigoService_UpdateRole_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateRoleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(IndigoServiceServer).UpdateRole(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cow.indigo.v1.IndigoService/UpdateRole",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(IndigoServiceServer).UpdateRole(ctx, req.(*UpdateRoleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _IndigoService_DeleteRole_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteRoleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(IndigoServiceServer).DeleteRole(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cow.indigo.v1.IndigoService/DeleteRole",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(IndigoServiceServer).DeleteRole(ctx, req.(*DeleteRoleRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -346,12 +442,24 @@ var IndigoService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*IndigoServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
+			MethodName: "ListRoles",
+			Handler:    _IndigoService_ListRoles_Handler,
+		},
+		{
 			MethodName: "GetRole",
 			Handler:    _IndigoService_GetRole_Handler,
 		},
 		{
 			MethodName: "InsertRole",
 			Handler:    _IndigoService_InsertRole_Handler,
+		},
+		{
+			MethodName: "UpdateRole",
+			Handler:    _IndigoService_UpdateRole_Handler,
+		},
+		{
+			MethodName: "DeleteRole",
+			Handler:    _IndigoService_DeleteRole_Handler,
 		},
 		{
 			MethodName: "AddRolePermission",
