@@ -20,8 +20,8 @@ const _ = grpc.SupportPackageIsVersion7
 type InstanceServiceClient interface {
 	// Create creates a new instance in the cluster
 	Create(ctx context.Context, in *CreateInstanceRequest, opts ...grpc.CallOption) (*CreateInstanceResponse, error)
-	// Delete deletes an instance running in the cluster
-	Delete(ctx context.Context, in *DeleteInstanceRequest, opts ...grpc.CallOption) (*DeleteInstanceResponse, error)
+	// End marks Instance as ended
+	End(ctx context.Context, in *EndInstanceRequest, opts ...grpc.CallOption) (*EndInstanceResponse, error)
 	// Get retrieves information about an existing instance
 	Get(ctx context.Context, in *GetInstanceRequest, opts ...grpc.CallOption) (*GetInstanceResponse, error)
 }
@@ -43,9 +43,9 @@ func (c *instanceServiceClient) Create(ctx context.Context, in *CreateInstanceRe
 	return out, nil
 }
 
-func (c *instanceServiceClient) Delete(ctx context.Context, in *DeleteInstanceRequest, opts ...grpc.CallOption) (*DeleteInstanceResponse, error) {
-	out := new(DeleteInstanceResponse)
-	err := c.cc.Invoke(ctx, "/cow.instance.v1.InstanceService/Delete", in, out, opts...)
+func (c *instanceServiceClient) End(ctx context.Context, in *EndInstanceRequest, opts ...grpc.CallOption) (*EndInstanceResponse, error) {
+	out := new(EndInstanceResponse)
+	err := c.cc.Invoke(ctx, "/cow.instance.v1.InstanceService/End", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -67,8 +67,8 @@ func (c *instanceServiceClient) Get(ctx context.Context, in *GetInstanceRequest,
 type InstanceServiceServer interface {
 	// Create creates a new instance in the cluster
 	Create(context.Context, *CreateInstanceRequest) (*CreateInstanceResponse, error)
-	// Delete deletes an instance running in the cluster
-	Delete(context.Context, *DeleteInstanceRequest) (*DeleteInstanceResponse, error)
+	// End marks Instance as ended
+	End(context.Context, *EndInstanceRequest) (*EndInstanceResponse, error)
 	// Get retrieves information about an existing instance
 	Get(context.Context, *GetInstanceRequest) (*GetInstanceResponse, error)
 }
@@ -80,8 +80,8 @@ type UnimplementedInstanceServiceServer struct {
 func (UnimplementedInstanceServiceServer) Create(context.Context, *CreateInstanceRequest) (*CreateInstanceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Create not implemented")
 }
-func (UnimplementedInstanceServiceServer) Delete(context.Context, *DeleteInstanceRequest) (*DeleteInstanceResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
+func (UnimplementedInstanceServiceServer) End(context.Context, *EndInstanceRequest) (*EndInstanceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method End not implemented")
 }
 func (UnimplementedInstanceServiceServer) Get(context.Context, *GetInstanceRequest) (*GetInstanceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Get not implemented")
@@ -116,20 +116,20 @@ func _InstanceService_Create_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InstanceService_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteInstanceRequest)
+func _InstanceService_End_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(EndInstanceRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InstanceServiceServer).Delete(ctx, in)
+		return srv.(InstanceServiceServer).End(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/cow.instance.v1.InstanceService/Delete",
+		FullMethod: "/cow.instance.v1.InstanceService/End",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InstanceServiceServer).Delete(ctx, req.(*DeleteInstanceRequest))
+		return srv.(InstanceServiceServer).End(ctx, req.(*EndInstanceRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -164,8 +164,8 @@ var InstanceService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _InstanceService_Create_Handler,
 		},
 		{
-			MethodName: "Delete",
-			Handler:    _InstanceService_Delete_Handler,
+			MethodName: "End",
+			Handler:    _InstanceService_End_Handler,
 		},
 		{
 			MethodName: "Get",
