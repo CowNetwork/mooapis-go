@@ -30,6 +30,7 @@ type IndigoServiceClient interface {
 	RemoveUserRole(ctx context.Context, in *RemoveUserRoleRequest, opts ...grpc.CallOption) (*RemoveUserRoleResponse, error)
 	AddUserPermission(ctx context.Context, in *AddUserPermissionRequest, opts ...grpc.CallOption) (*AddUserPermissionResponse, error)
 	RemoveUserPermission(ctx context.Context, in *RemoveUserPermissionRequest, opts ...grpc.CallOption) (*RemoveUserPermissionResponse, error)
+	HasUserPermission(ctx context.Context, in *HasUserPermissionRequest, opts ...grpc.CallOption) (*HasUserPermissionResponse, error)
 }
 
 type indigoServiceClient struct {
@@ -148,6 +149,15 @@ func (c *indigoServiceClient) RemoveUserPermission(ctx context.Context, in *Remo
 	return out, nil
 }
 
+func (c *indigoServiceClient) HasUserPermission(ctx context.Context, in *HasUserPermissionRequest, opts ...grpc.CallOption) (*HasUserPermissionResponse, error) {
+	out := new(HasUserPermissionResponse)
+	err := c.cc.Invoke(ctx, "/cow.indigo.v1.IndigoService/HasUserPermission", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // IndigoServiceServer is the server API for IndigoService service.
 // All implementations should embed UnimplementedIndigoServiceServer
 // for forward compatibility
@@ -164,6 +174,7 @@ type IndigoServiceServer interface {
 	RemoveUserRole(context.Context, *RemoveUserRoleRequest) (*RemoveUserRoleResponse, error)
 	AddUserPermission(context.Context, *AddUserPermissionRequest) (*AddUserPermissionResponse, error)
 	RemoveUserPermission(context.Context, *RemoveUserPermissionRequest) (*RemoveUserPermissionResponse, error)
+	HasUserPermission(context.Context, *HasUserPermissionRequest) (*HasUserPermissionResponse, error)
 }
 
 // UnimplementedIndigoServiceServer should be embedded to have forward compatible implementations.
@@ -205,6 +216,9 @@ func (UnimplementedIndigoServiceServer) AddUserPermission(context.Context, *AddU
 }
 func (UnimplementedIndigoServiceServer) RemoveUserPermission(context.Context, *RemoveUserPermissionRequest) (*RemoveUserPermissionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RemoveUserPermission not implemented")
+}
+func (UnimplementedIndigoServiceServer) HasUserPermission(context.Context, *HasUserPermissionRequest) (*HasUserPermissionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method HasUserPermission not implemented")
 }
 
 // UnsafeIndigoServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -434,6 +448,24 @@ func _IndigoService_RemoveUserPermission_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _IndigoService_HasUserPermission_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(HasUserPermissionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(IndigoServiceServer).HasUserPermission(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cow.indigo.v1.IndigoService/HasUserPermission",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(IndigoServiceServer).HasUserPermission(ctx, req.(*HasUserPermissionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // IndigoService_ServiceDesc is the grpc.ServiceDesc for IndigoService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -488,6 +520,10 @@ var IndigoService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RemoveUserPermission",
 			Handler:    _IndigoService_RemoveUserPermission_Handler,
+		},
+		{
+			MethodName: "HasUserPermission",
+			Handler:    _IndigoService_HasUserPermission_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
