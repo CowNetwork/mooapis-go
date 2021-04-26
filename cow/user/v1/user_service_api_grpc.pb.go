@@ -20,14 +20,18 @@ const _ = grpc.SupportPackageIsVersion7
 type UserServiceClient interface {
 	// Returns the player or creates/updates it.
 	GetPlayer(ctx context.Context, in *GetPlayerRequest, opts ...grpc.CallOption) (*GetPlayerResponse, error)
-	// Returns the player or creates/updates it.
+	// Returns the player.
 	GetPlayerById(ctx context.Context, in *GetPlayerByIdRequest, opts ...grpc.CallOption) (*GetPlayerByIdResponse, error)
+	// Returns the player.
+	GetPlayerByName(ctx context.Context, in *GetPlayerByNameRequest, opts ...grpc.CallOption) (*GetPlayerByNameResponse, error)
 	// Returns the players or creates/updates them.
 	GetPlayers(ctx context.Context, in *GetPlayersRequest, opts ...grpc.CallOption) (*GetPlayersResponse, error)
 	// Returns the players or creates/updates them.
 	GetPlayersById(ctx context.Context, in *GetPlayersByIdRequest, opts ...grpc.CallOption) (*GetPlayersByIdResponse, error)
 	// Returns the user by id.
 	GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error)
+	// Returns the player.
+	GetUserByName(ctx context.Context, in *GetUserByNameRequest, opts ...grpc.CallOption) (*GetUserByNameResponse, error)
 	// Returns the players assigned to this user.
 	GetUserPlayers(ctx context.Context, in *GetUserPlayersRequest, opts ...grpc.CallOption) (*GetUserPlayersResponse, error)
 	// Updates the metadata and returns the player.
@@ -62,6 +66,15 @@ func (c *userServiceClient) GetPlayerById(ctx context.Context, in *GetPlayerById
 	return out, nil
 }
 
+func (c *userServiceClient) GetPlayerByName(ctx context.Context, in *GetPlayerByNameRequest, opts ...grpc.CallOption) (*GetPlayerByNameResponse, error) {
+	out := new(GetPlayerByNameResponse)
+	err := c.cc.Invoke(ctx, "/cow.user.v1.UserService/GetPlayerByName", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *userServiceClient) GetPlayers(ctx context.Context, in *GetPlayersRequest, opts ...grpc.CallOption) (*GetPlayersResponse, error) {
 	out := new(GetPlayersResponse)
 	err := c.cc.Invoke(ctx, "/cow.user.v1.UserService/GetPlayers", in, out, opts...)
@@ -83,6 +96,15 @@ func (c *userServiceClient) GetPlayersById(ctx context.Context, in *GetPlayersBy
 func (c *userServiceClient) GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error) {
 	out := new(GetUserResponse)
 	err := c.cc.Invoke(ctx, "/cow.user.v1.UserService/GetUser", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) GetUserByName(ctx context.Context, in *GetUserByNameRequest, opts ...grpc.CallOption) (*GetUserByNameResponse, error) {
+	out := new(GetUserByNameResponse)
+	err := c.cc.Invoke(ctx, "/cow.user.v1.UserService/GetUserByName", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -122,14 +144,18 @@ func (c *userServiceClient) UpdateUserMetadata(ctx context.Context, in *UpdateUs
 type UserServiceServer interface {
 	// Returns the player or creates/updates it.
 	GetPlayer(context.Context, *GetPlayerRequest) (*GetPlayerResponse, error)
-	// Returns the player or creates/updates it.
+	// Returns the player.
 	GetPlayerById(context.Context, *GetPlayerByIdRequest) (*GetPlayerByIdResponse, error)
+	// Returns the player.
+	GetPlayerByName(context.Context, *GetPlayerByNameRequest) (*GetPlayerByNameResponse, error)
 	// Returns the players or creates/updates them.
 	GetPlayers(context.Context, *GetPlayersRequest) (*GetPlayersResponse, error)
 	// Returns the players or creates/updates them.
 	GetPlayersById(context.Context, *GetPlayersByIdRequest) (*GetPlayersByIdResponse, error)
 	// Returns the user by id.
 	GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error)
+	// Returns the player.
+	GetUserByName(context.Context, *GetUserByNameRequest) (*GetUserByNameResponse, error)
 	// Returns the players assigned to this user.
 	GetUserPlayers(context.Context, *GetUserPlayersRequest) (*GetUserPlayersResponse, error)
 	// Updates the metadata and returns the player.
@@ -148,6 +174,9 @@ func (UnimplementedUserServiceServer) GetPlayer(context.Context, *GetPlayerReque
 func (UnimplementedUserServiceServer) GetPlayerById(context.Context, *GetPlayerByIdRequest) (*GetPlayerByIdResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPlayerById not implemented")
 }
+func (UnimplementedUserServiceServer) GetPlayerByName(context.Context, *GetPlayerByNameRequest) (*GetPlayerByNameResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPlayerByName not implemented")
+}
 func (UnimplementedUserServiceServer) GetPlayers(context.Context, *GetPlayersRequest) (*GetPlayersResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPlayers not implemented")
 }
@@ -156,6 +185,9 @@ func (UnimplementedUserServiceServer) GetPlayersById(context.Context, *GetPlayer
 }
 func (UnimplementedUserServiceServer) GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUser not implemented")
+}
+func (UnimplementedUserServiceServer) GetUserByName(context.Context, *GetUserByNameRequest) (*GetUserByNameResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUserByName not implemented")
 }
 func (UnimplementedUserServiceServer) GetUserPlayers(context.Context, *GetUserPlayersRequest) (*GetUserPlayersResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUserPlayers not implemented")
@@ -214,6 +246,24 @@ func _UserService_GetPlayerById_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UserService_GetPlayerByName_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetPlayerByNameRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).GetPlayerByName(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cow.user.v1.UserService/GetPlayerByName",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).GetPlayerByName(ctx, req.(*GetPlayerByNameRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _UserService_GetPlayers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetPlayersRequest)
 	if err := dec(in); err != nil {
@@ -264,6 +314,24 @@ func _UserService_GetUser_Handler(srv interface{}, ctx context.Context, dec func
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(UserServiceServer).GetUser(ctx, req.(*GetUserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_GetUserByName_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUserByNameRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).GetUserByName(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cow.user.v1.UserService/GetUserByName",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).GetUserByName(ctx, req.(*GetUserByNameRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -338,6 +406,10 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _UserService_GetPlayerById_Handler,
 		},
 		{
+			MethodName: "GetPlayerByName",
+			Handler:    _UserService_GetPlayerByName_Handler,
+		},
+		{
 			MethodName: "GetPlayers",
 			Handler:    _UserService_GetPlayers_Handler,
 		},
@@ -348,6 +420,10 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetUser",
 			Handler:    _UserService_GetUser_Handler,
+		},
+		{
+			MethodName: "GetUserByName",
+			Handler:    _UserService_GetUserByName_Handler,
 		},
 		{
 			MethodName: "GetUserPlayers",
